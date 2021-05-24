@@ -6,7 +6,6 @@ using Verse.AI;
 
 namespace Rats
 {
-    //[HarmonyPatch(typeof(Map), "MapPostTick")]
     public class RatTracker : MapComponent
     {
         private static int SpawnedToday;
@@ -16,7 +15,6 @@ namespace Rats
         {
         }
 
-        //[HarmonyPostfix]
         public override void MapComponentTick()
         {
             base.MapComponentTick();
@@ -49,7 +47,10 @@ namespace Rats
 
             // Get all things rotting and not refrigerated
             var validThings = from rotting in map.listerThings.AllThings
-                where rotting.TryGetComp<CompRottable>() != null &&
+                where rotting.def.defName == "MeatRotten" &&
+                      rotting.AmbientTemperature >= 10f
+                      ||
+                      rotting.TryGetComp<CompRottable>() != null &&
                       GenTemperature.RotRateAtTemperature(
                           Mathf.RoundToInt(rotting.TryGetComp<CompRottable>().parent.AmbientTemperature)) >= 0.999f &&
                       rotting.def.GetCompProperties<CompProperties_Rottable>().daysToRotStart <=
@@ -62,7 +63,7 @@ namespace Rats
                 return;
             }
 
-            var item = validThings.RandomElement();
+            var item = validThings.RandomElementByWeight(WeightSelector);
             var ratDef = Rats.ValidRatRaces.RandomElement();
             var ratsToSpawn = Rand.RangeInclusive(1, RatsMod.instance.Settings.MaxRats);
             Rats.LogMessage($"Spawning {ratsToSpawn} rats at position of {item}");
@@ -76,7 +77,7 @@ namespace Rats
                 SpawnedToday++;
             }
 
-            if (!map.areaManager.Home.ActiveCells.Contains(item.Position))
+            if (!RatsMod.instance.Settings.ShowMessages || !map.areaManager.Home.ActiveCells.Contains(item.Position))
             {
                 return;
             }
@@ -84,6 +85,22 @@ namespace Rats
             var message = new Message("Rats.message".Translate(item.Label), MessageTypeDefOf.NeutralEvent,
                 new LookTargets(item));
             Messages.Message(message);
+        }
+
+        private float WeightSelector(Thing arg)
+        {
+            if (arg.def.defName == "MeatRotten")
+            {
+                return 10;
+            }
+
+            var rotting = arg.TryGetComp<CompRottable>();
+            if (rotting == null)
+            {
+                return 0;
+            }
+
+            return rotting.RotProgress;
         }
     }
 }

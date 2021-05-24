@@ -1,4 +1,7 @@
 # Changelog for Rats
 
+1.0.1.0 - Rats will target more rotted items first, animals can be added with patches, info message can be turned off, support for RottenMeat mod.
+
+
 1.0.0.0 - First publish
 

@@ -11,21 +11,14 @@ namespace Rats
 
         static Rats()
         {
-            //var harmony = new Harmony("Mlie.Rats");
-            //harmony.PatchAll(Assembly.GetExecutingAssembly());
             updateAvailableRats();
         }
 
         private static void updateAvailableRats()
         {
-            var ratDefs = new List<string>
-            {
-                "Rat",
-                "FancyRat",
-                "SnowRat"
-            };
             ValidRatRaces.AddRange(from race in DefDatabase<PawnKindDef>.AllDefsListForReading
-                where ratDefs.Contains(race.defName)
+                where race.HasModExtension<RatExtension>() &&
+                      race.GetModExtension<RatExtension>().IsRat
                 select race);
             if (ValidRatRaces.Count == 0)
             {

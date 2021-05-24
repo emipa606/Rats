@@ -81,6 +81,8 @@ namespace Rats
                 Settings.RotDays, 1, 30, false,
                 "Rats.rotdays.label".Translate(Settings.RotDays), null, null, 1f);
             listing_Standard.Gap();
+            listing_Standard.CheckboxLabeled("Rats.showmessages.label".Translate(), ref Settings.ShowMessages,
+                "Rats.showmessages.tooltip".Translate());
             listing_Standard.CheckboxLabeled("Rats.logging.label".Translate(), ref Settings.VerboseLogging,
                 "Rats.logging.tooltip".Translate());
             if (currentVersion != null)

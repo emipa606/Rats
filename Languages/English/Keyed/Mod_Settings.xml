@@ -1,0 +1,10 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<LanguageData>
+  <Rats.logging.label>Enable verbose logging</Rats.logging.label>
+  <Rats.logging.tooltip>Shows verbose logging, for finding errors</Rats.logging.tooltip>
+  <Rats.version.label>Installed mod-version: {0}</Rats.version.label>
+  <Rats.maxrats.label>Maximum rats to spawn at one time: {0}</Rats.maxrats.label>
+  <Rats.maxperday.label>Maximum rats to spawn per day: {0}</Rats.maxperday.label>
+  <Rats.rotdays.label>Will spawn on things that rot within {0} days</Rats.rotdays.label>
+  <Rats.message>Hungry rats have found rotting {0}</Rats.message>
+</LanguageData>

@@ -7,6 +7,8 @@ Rats will spawn to eat any unattended food or corpses that is not kept refrigera
 Just like in real life!
 
 Uses rats from https://steamcommunity.com/sharedfiles/filedetails/?id=2113851330]FancyRats and https://steamcommunity.com/sharedfiles/filedetails/?id=2115080957]SnowRats if loaded.
+More can be added via patches.
+Will also spawn for meat from https://steamcommunity.com/sharedfiles/filedetails/?id=2466790513]Rotten Meat
 
 [table]
     [tr]

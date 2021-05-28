@@ -55,6 +55,7 @@ namespace Rats
                           Mathf.RoundToInt(rotting.TryGetComp<CompRottable>().parent.AmbientTemperature)) >= 0.999f &&
                       rotting.def.GetCompProperties<CompProperties_Rottable>().daysToRotStart <=
                       RatsMod.instance.Settings.RotDays &&
+                      rotting.TryGetComp<CompRottable>().RotProgress > RatsMod.instance.Settings.MinDays * 60000 &&
                       (!rotting.def.IsCorpse || !rotting.ParentHolder.IsEnclosingContainer())
                 select rotting;
             if (!validThings.Any())

@@ -9,6 +9,7 @@ namespace Rats
     {
         public int MaxPerDay = 5;
         public int MaxRats = 3;
+        public float MinDays = 1f;
         public int RotDays = 5;
         public bool ShowMessages = true;
         public bool VerboseLogging;
@@ -21,6 +22,7 @@ namespace Rats
             Scribe_Values.Look(ref MaxRats, "MaxRats", 3);
             Scribe_Values.Look(ref MaxPerDay, "MaxPerDay", 5);
             Scribe_Values.Look(ref RotDays, "RotDays", 5);
+            Scribe_Values.Look(ref MinDays, "MinDays", 1f);
         }
     }
 }

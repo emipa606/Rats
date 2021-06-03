@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.Linq;
 using RimWorld;
 using UnityEngine;
@@ -12,6 +11,8 @@ namespace Rats
     {
         private static int SpawnedToday;
         private static int DaysPassed;
+
+        private static readonly Dictionary<Thing, CompRottable> rottableThings = new Dictionary<Thing, CompRottable>();
 
         public RatTracker(Map map) : base(map)
         {
@@ -62,7 +63,7 @@ namespace Rats
             {
                 var loc = CellFinder.RandomClosewalkCellNear(item.Position, map,
                     2);
-                var spawnedRat = (Pawn)GenSpawn.Spawn(PawnGenerator.GeneratePawn(ratDef), loc, map);
+                var spawnedRat = (Pawn) GenSpawn.Spawn(PawnGenerator.GeneratePawn(ratDef), loc, map);
                 spawnedRat.needs.food.CurLevelPercentage = 1f;
                 spawnedRat.jobs.TryTakeOrderedJob_NewTemp(new Job(JobDefOf.Ingest, item));
                 SpawnedToday++;
@@ -78,7 +79,6 @@ namespace Rats
             Messages.Message(message);
         }
 
-        public static Dictionary<Thing, CompRottable> rottableThings = new Dictionary<Thing, CompRottable>();
         private List<Thing> GetRottenThings()
         {
             // old version
@@ -110,16 +110,22 @@ namespace Rats
                         compRottable = thing.TryGetComp<CompRottable>();
                         rottableThings[thing] = compRottable;
                     }
-                    if (compRottable != null && GenTemperature.RotRateAtTemperature(Mathf.RoundToInt(compRottable.parent.AmbientTemperature)) >= 0.999f
-                        && thing.def.GetCompProperties<CompProperties_Rottable>().daysToRotStart <= RatsMod.instance.Settings.RotDays
-                        && compRottable.RotProgress > RatsMod.instance.Settings.MinDays * 60000 && (!thing.def.IsCorpse || !thing.ParentHolder.IsEnclosingContainer()))
+
+                    if (thing.def != null && compRottable != null && GenTemperature.RotRateAtTemperature(
+                            Mathf.RoundToInt(compRottable.parent.AmbientTemperature)) >= 0.999f &&
+                        thing.def.GetCompProperties<CompProperties_Rottable>().daysToRotStart <=
+                        RatsMod.instance.Settings.RotDays &&
+                        compRottable.RotProgress > RatsMod.instance.Settings.MinDays * 60000 &&
+                        (!thing.def.IsCorpse || !thing.ParentHolder.IsEnclosingContainer()))
                     {
                         rottenThings.Add(thing);
                     }
                 }
             }
+
             return rottenThings;
         }
+
         private float WeightSelector(Thing arg)
         {
             if (arg.def != null && arg.def == Rats.MeatRotten)
@@ -137,6 +143,7 @@ namespace Rats
             {
                 return 0;
             }
+
             return compRottable.RotProgress;
         }
     }

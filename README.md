@@ -10,6 +10,8 @@ Uses rats from https://steamcommunity.com/sharedfiles/filedetails/?id=2113851330
 More can be added via patches.
 Will also spawn for meat from https://steamcommunity.com/sharedfiles/filedetails/?id=2466790513]Rotten Meat
 
+Works well with https://steamcommunity.com/sharedfiles/filedetails/?id=2503519676]Some Like It Rotten for making a corpse-based rat-farm
+
 [table]
     [tr]
         [td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)

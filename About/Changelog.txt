@@ -1,5 +1,8 @@
 # Changelog for Rats
 
+1.0.3.0 - Performance optimizations, thanks Taranchuk!
+
+
 1.0.2.0 - Added setting for minimum rot-age for spawning rats
 
 

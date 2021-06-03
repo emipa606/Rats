@@ -1,16 +1,20 @@
-﻿using System.Collections.Generic;
+﻿using RimWorld;
+using System.Collections.Generic;
 using System.Linq;
 using Verse;
 
 namespace Rats
 {
+
     [StaticConstructorOnStartup]
     public class Rats
     {
         public static readonly List<PawnKindDef> ValidRatRaces = new List<PawnKindDef>();
+        public static ThingDef MeatRotten;
 
         static Rats()
         {
+            MeatRotten = DefDatabase<ThingDef>.GetNamedSilentFail("MeatRotten");
             updateAvailableRats();
         }
 

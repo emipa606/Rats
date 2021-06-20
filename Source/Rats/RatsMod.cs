@@ -77,6 +77,10 @@ namespace Rats
                 Settings.MaxPerDay, Settings.MaxRats, 50, false,
                 "Rats.maxperday.label".Translate(Settings.MaxPerDay), null, null, 1f));
             listing_Standard.Gap();
+            Settings.MaxTotalRats = (int) Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+                Settings.MaxTotalRats, 0, 100, false,
+                "Rats.maxtotalrats.label".Translate(Settings.MaxTotalRats), null, null, 1f);
+            listing_Standard.Gap();
             Settings.MinDays = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
                 Settings.MinDays, 0, 30, false,
                 "Rats.mindays.label".Translate(Settings.MinDays), null, null, 0.1f);

@@ -12,6 +12,8 @@ Will also spawn for meat from https://steamcommunity.com/sharedfiles/filedetails
 
 Works well with https://steamcommunity.com/sharedfiles/filedetails/?id=2503519676]Some Like It Rotten for making a corpse-based rat-farm
 
+Performance-optimizations by Taranchuk
+
 [table]
     [tr]
         [td]https://invite.gg/Mlie]![Image](https://i.imgur.com/zdzzBrc.png)

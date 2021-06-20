@@ -45,7 +45,19 @@ namespace Rats
 
             if (SpawnedToday >= RatsMod.instance.Settings.MaxPerDay)
             {
+                Rats.LogMessage("Maximum rats already spawned per day");
                 return;
+            }
+
+            if (RatsMod.instance.Settings.MaxTotalRats > 0)
+            {
+                if ((from pawn in map.mapPawns.AllPawnsSpawned
+                    where Rats.ValidRatRaces.Contains(pawn.def.race.AnyPawnKind)
+                    select pawn).Count() >= RatsMod.instance.Settings.MaxTotalRats)
+                {
+                    Rats.LogMessage("Maximum rats already spawned on this map");
+                    return;
+                }
             }
 
             var validThings = GetRottenThings();

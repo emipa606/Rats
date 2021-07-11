@@ -77,7 +77,7 @@ namespace Rats
                     2);
                 var spawnedRat = (Pawn) GenSpawn.Spawn(PawnGenerator.GeneratePawn(ratDef), loc, map);
                 spawnedRat.needs.food.CurLevelPercentage = 1f;
-                spawnedRat.jobs.TryTakeOrderedJob_NewTemp(new Job(JobDefOf.Ingest, item));
+                spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
                 SpawnedToday++;
             }
 

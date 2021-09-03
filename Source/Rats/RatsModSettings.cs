@@ -11,6 +11,7 @@ namespace Rats
         public int MaxRats = 3;
         public int MaxTotalRats;
         public float MinDays = 1f;
+        public float PercentScaria;
         public int RotDays = 5;
         public bool ShowMessages = true;
         public bool VerboseLogging;
@@ -25,6 +26,7 @@ namespace Rats
             Scribe_Values.Look(ref RotDays, "RotDays", 5);
             Scribe_Values.Look(ref MinDays, "MinDays", 1f);
             Scribe_Values.Look(ref MaxTotalRats, "MaxTotalRats");
+            Scribe_Values.Look(ref PercentScaria, "PercentScaria");
         }
     }
 }

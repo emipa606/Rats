@@ -69,23 +69,27 @@ namespace Rats
             var listing_Standard = new Listing_Standard();
             listing_Standard.Begin(rect);
             listing_Standard.Gap();
-            Settings.MaxRats = (int) Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+            Settings.MaxRats = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
                 Settings.MaxRats, 1, 20, false,
                 "Rats.maxrats.label".Translate(Settings.MaxRats), null, null, 1f);
             listing_Standard.Gap();
-            Settings.MaxPerDay = Math.Max(Settings.MaxRats, (int) Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+            Settings.MaxPerDay = Math.Max(Settings.MaxRats, (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
                 Settings.MaxPerDay, Settings.MaxRats, 50, false,
                 "Rats.maxperday.label".Translate(Settings.MaxPerDay), null, null, 1f));
             listing_Standard.Gap();
-            Settings.MaxTotalRats = (int) Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+            Settings.MaxTotalRats = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
                 Settings.MaxTotalRats, 0, 100, false,
                 "Rats.maxtotalrats.label".Translate(Settings.MaxTotalRats), null, null, 1f);
+            listing_Standard.Gap();
+            Settings.PercentScaria = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+                Settings.PercentScaria, 0, 1f, false,
+                "Rats.percentscaria.label".Translate(Settings.PercentScaria * 100), null, null, 0.01f);
             listing_Standard.Gap();
             Settings.MinDays = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
                 Settings.MinDays, 0, 30, false,
                 "Rats.mindays.label".Translate(Settings.MinDays), null, null, 0.1f);
             listing_Standard.Gap();
-            Settings.RotDays = (int) Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+            Settings.RotDays = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
                 Settings.RotDays, 1, 30, false,
                 "Rats.rotdays.label".Translate(Settings.RotDays), null, null, 1f);
             listing_Standard.Gap();

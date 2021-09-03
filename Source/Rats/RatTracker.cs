@@ -75,7 +75,12 @@ namespace Rats
             {
                 var loc = CellFinder.RandomClosewalkCellNear(item.Position, map,
                     2);
-                var spawnedRat = (Pawn) GenSpawn.Spawn(PawnGenerator.GeneratePawn(ratDef), loc, map);
+                var spawnedRat = (Pawn)GenSpawn.Spawn(PawnGenerator.GeneratePawn(ratDef), loc, map);
+                if (Rand.Chance(RatsMod.instance.Settings.PercentScaria))
+                {
+                    spawnedRat.health.AddHediff(HediffDefOf.Scaria);
+                }
+
                 spawnedRat.needs.food.CurLevelPercentage = 1f;
                 spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
                 SpawnedToday++;

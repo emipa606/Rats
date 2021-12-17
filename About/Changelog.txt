@@ -1,5 +1,8 @@
 # Changelog for Rats
 
+1.0.7.0 - For some reason CE removes the rat-modextension if loaded before this mod. Added load-order in about-file.
+
+
 1.0.6.0 - Added scaria setting
 
 

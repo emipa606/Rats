@@ -17,6 +17,12 @@ public class Rats
             .Where(def => def.race is { Animal: true })
             .OrderBy(def => def.label).ToList();
         MeatRotten = DefDatabase<ThingDef>.GetNamedSilentFail("MeatRotten");
+        ValidRatRaces = new List<PawnKindDef>();
+        if (RatsMod.instance.Settings.ManualRats == null)
+        {
+            RatsMod.instance.Settings.ManualRats = new List<string>();
+        }
+
         UpdateAvailableRats();
     }
 

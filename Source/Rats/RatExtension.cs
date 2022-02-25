@@ -1,9 +1,8 @@
 ﻿using Verse;
 
-namespace Rats
+namespace Rats;
+
+public class RatExtension : DefModExtension
 {
-    public class RatExtension : DefModExtension
-    {
-        public bool IsRat = true;
-    }
+    public bool IsRat = true;
 }

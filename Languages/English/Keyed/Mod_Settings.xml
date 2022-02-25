@@ -12,4 +12,5 @@
   <Rats.rotdays.label>Will spawn on things that normally rots in {0} days</Rats.rotdays.label>
   <Rats.mindays.label>Will spawn on things have been unrefridgerated for at least {0} days</Rats.mindays.label>
   <Rats.message>Hungry rats have found rotting {0}</Rats.message>
+  <Rats.search>Search</Rats.search>
 </LanguageData>

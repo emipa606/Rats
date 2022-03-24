@@ -8,6 +8,7 @@ namespace Rats;
 /// </summary>
 internal class RatsModSettings : ModSettings
 {
+    public bool Dessicated = true;
     public List<string> ManualRats = new List<string>();
     public int MaxPerDay = 5;
     public int MaxRats = 3;
@@ -23,6 +24,7 @@ internal class RatsModSettings : ModSettings
         base.ExposeData();
         Scribe_Values.Look(ref VerboseLogging, "VerboseLogging");
         Scribe_Values.Look(ref ShowMessages, "ShowMessages", true);
+        Scribe_Values.Look(ref Dessicated, "Dessicated", true);
         Scribe_Values.Look(ref MaxRats, "MaxRats", 3);
         Scribe_Values.Look(ref MaxPerDay, "MaxPerDay", 5);
         Scribe_Values.Look(ref RotDays, "RotDays", 5);

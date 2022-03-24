@@ -104,6 +104,9 @@ internal class RatsMod : Mod
             Settings.RotDays, 1, 30, false,
             "Rats.rotdays.label".Translate(Settings.RotDays), null, null, 1f);
         listing_Standard.Gap();
+        listing_Standard.CheckboxLabeled("Rats.dessicated.label".Translate(), ref Settings.Dessicated,
+            "Rats.dessicated.tooltip".Translate());
+        listing_Standard.Gap();
         listing_Standard.CheckboxLabeled("Rats.showmessages.label".Translate(), ref Settings.ShowMessages,
             "Rats.showmessages.tooltip".Translate());
         listing_Standard.CheckboxLabeled("Rats.logging.label".Translate(), ref Settings.VerboseLogging,

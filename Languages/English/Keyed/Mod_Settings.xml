@@ -4,6 +4,8 @@
   <Rats.logging.tooltip>Shows verbose logging, for finding errors</Rats.logging.tooltip>
   <Rats.showmessages.label>Show messages</Rats.showmessages.label>
   <Rats.showmessages.tooltip>Shows a message when rats spawn on an item in the home-area</Rats.showmessages.tooltip>
+  <Rats.dessicated.label>Spawn rats from dessicated corpses</Rats.dessicated.label>
+  <Rats.dessicated.tooltip>If unchecked rats will only spawn from corpses if they are not dessicated</Rats.dessicated.tooltip>
   <Rats.version.label>Installed mod-version: {0}</Rats.version.label>
   <Rats.maxrats.label>Maximum rats to spawn at one time: {0}</Rats.maxrats.label>
   <Rats.maxperday.label>Maximum rats to spawn per day: {0}</Rats.maxperday.label>

@@ -79,6 +79,7 @@ internal class RatsMod : Mod
 
         var listing_Standard = new Listing_Standard();
         listing_Standard.Begin(rect);
+        listing_Standard.ColumnWidth = rect.width * 0.95f / 2f;
         listing_Standard.Gap();
         Settings.MaxRats = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
             Settings.MaxRats, 1, 20, false,
@@ -100,41 +101,50 @@ internal class RatsMod : Mod
             Settings.MinDays, 0, 30, false,
             "Rats.mindays.label".Translate(Settings.MinDays), null, null, 0.1f);
         listing_Standard.Gap();
-        Settings.RotDays = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+
+        var lastRect = listing_Standard.GetRect(20);
+        Settings.RotDays = (int)Widgets.HorizontalSlider(lastRect,
             Settings.RotDays, 1, 30, false,
             "Rats.rotdays.label".Translate(Settings.RotDays), null, null, 1f);
-        listing_Standard.Gap();
+        listing_Standard.NewColumn();
         listing_Standard.CheckboxLabeled("Rats.dessicated.label".Translate(), ref Settings.Dessicated,
             "Rats.dessicated.tooltip".Translate());
+        listing_Standard.CheckboxLabeled("Rats.biome.label".Translate(), ref Settings.Biome,
+            "Rats.biome.tooltip".Translate());
         listing_Standard.Gap();
         listing_Standard.CheckboxLabeled("Rats.showmessages.label".Translate(), ref Settings.ShowMessages,
             "Rats.showmessages.tooltip".Translate());
         listing_Standard.CheckboxLabeled("Rats.logging.label".Translate(), ref Settings.VerboseLogging,
             "Rats.logging.tooltip".Translate());
-        Rect lastLabel;
         if (currentVersion != null)
         {
             listing_Standard.Gap();
             GUI.contentColor = Color.gray;
-            lastLabel = listing_Standard.Label("Rats.version.label".Translate(currentVersion));
+            listing_Standard.Label("Rats.version.label".Translate(currentVersion));
             GUI.contentColor = Color.white;
-        }
-        else
-        {
-            lastLabel = listing_Standard.Label(string.Empty);
         }
 
         searchText =
             Widgets.TextField(
                 new Rect(
-                    lastLabel.position +
-                    new Vector2(rect.width - searchSize.x, 0),
+                    lastRect.position +
+                    new Vector2(rect.width - searchSize.x - (iconSize.x * 3), 0),
                     searchSize),
                 searchText);
         TooltipHandler.TipRegion(new Rect(
-            lastLabel.position + new Vector2(rect.width - searchSize.x, 0),
+            lastRect.position + new Vector2(rect.width - searchSize.x - (iconSize.x * 3), 0),
             searchSize), "Rats.search".Translate());
+        Text.Font = GameFont.Tiny;
+        Widgets.Label(new Rect(
+            lastRect.position +
+            new Vector2(rect.width - (iconSize.x * 2.4f), lastRect.height / 2f),
+            searchSize), "Rats.spawn.label".Translate());
+        Widgets.Label(new Rect(
+            lastRect.position +
+            new Vector2(rect.width - (iconSize.x * 1.4f), lastRect.height / 2f),
+            searchSize), "Rats.inside.label".Translate());
 
+        Text.Font = GameFont.Small;
         listing_Standard.End();
 
 
@@ -148,8 +158,8 @@ internal class RatsMod : Mod
         }
 
         var borderRect = rect;
-        borderRect.y += lastLabel.y + 30;
-        borderRect.height -= lastLabel.y + 30;
+        borderRect.y += lastRect.y + 30;
+        borderRect.height -= lastRect.y + 30;
         var scrollContentRect = rect;
         scrollContentRect.height = allAnimals.Count * 61f;
         scrollContentRect.width -= 20;
@@ -174,23 +184,40 @@ internal class RatsMod : Mod
             var raceLabel = $"{animal.label.CapitalizeFirst()} ({animal.defName}) - {modInfo}";
             DrawIcon(animal,
                 new Rect(rowRect.position, iconSize));
-            var selectorRect = new Rect(rowRect.position + new Vector2(iconSize.x, 0),
-                rowRect.size - new Vector2(iconSize.x, 0));
-            var selected = instance.Settings.ManualRats.Contains(animal.defName);
-            var wasSelected = selected;
-            Widgets.CheckboxLabeled(selectorRect, raceLabel, ref selected);
-            if (selected == wasSelected)
+            var nameRect = new Rect(rowRect.position + new Vector2(iconSize.x, 0),
+                rowRect.size - new Vector2(iconSize.x * 2, 0));
+            var spawnAtAll = instance.Settings.ManualRats.Contains(animal.defName);
+            var inside = instance.Settings.SpawnInside.Contains(animal.defName);
+            var wasSpawnAtAll = spawnAtAll;
+            var wasInside = inside;
+            Widgets.Label(nameRect, raceLabel);
+            Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x * 2, 0),
+                ref spawnAtAll);
+            Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x, 0), ref inside);
+            if (spawnAtAll != wasSpawnAtAll)
+            {
+                if (spawnAtAll)
+                {
+                    instance.Settings.ManualRats.Add(animal.defName);
+                }
+                else
+                {
+                    instance.Settings.ManualRats.Remove(animal.defName);
+                }
+            }
+
+            if (inside == wasInside)
             {
                 continue;
             }
 
-            if (selected)
+            if (inside)
             {
-                instance.Settings.ManualRats.Add(animal.defName);
+                instance.Settings.SpawnInside.Add(animal.defName);
             }
             else
             {
-                instance.Settings.ManualRats.Remove(animal.defName);
+                instance.Settings.SpawnInside.Remove(animal.defName);
             }
         }
 

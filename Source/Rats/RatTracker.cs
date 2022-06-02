@@ -9,13 +9,14 @@ namespace Rats;
 
 public class RatTracker : MapComponent
 {
-    private static int SpawnedToday;
-    private static int DaysPassed;
-
     private static readonly Dictionary<Thing, CompRottable> rottableThings = new Dictionary<Thing, CompRottable>();
+    private readonly BiomeDef currentBiome;
+    private int daysPassed;
+    private int spawnedToday;
 
     public RatTracker(Map map) : base(map)
     {
+        currentBiome = map.Biome;
     }
 
     public override void MapComponentTick()
@@ -37,13 +38,13 @@ public class RatTracker : MapComponent
             return;
         }
 
-        if (GenDate.DaysPassed != DaysPassed)
+        if (GenDate.DaysPassed != daysPassed)
         {
-            DaysPassed = GenDate.DaysPassed;
-            SpawnedToday = 0;
+            daysPassed = GenDate.DaysPassed;
+            spawnedToday = 0;
         }
 
-        if (SpawnedToday >= RatsMod.instance.Settings.MaxPerDay)
+        if (spawnedToday >= RatsMod.instance.Settings.MaxPerDay)
         {
             Rats.LogMessage("Maximum rats already spawned per day");
             return;
@@ -68,7 +69,25 @@ public class RatTracker : MapComponent
         }
 
         var item = validThings.RandomElementByWeight(WeightSelector);
-        var ratDef = Rats.ValidRatRaces.RandomElement();
+        var currentValidRats = Rats.ValidRatRaces.Intersect(currentBiome.AllWildAnimals);
+        if (!currentValidRats.Any())
+        {
+            Rats.LogMessage("No valid rats found for this biome");
+            return;
+        }
+
+        if (item.Position.IsInside(item))
+        {
+            currentValidRats = currentValidRats.Intersect(Rats.InsideRatRaces);
+        }
+
+        if (!currentValidRats.Any())
+        {
+            Rats.LogMessage("No valid rats found to spawn inside");
+            return;
+        }
+
+        var ratDef = currentValidRats.RandomElement();
         var ratsToSpawn = Rand.RangeInclusive(1, RatsMod.instance.Settings.MaxRats);
         Rats.LogMessage($"Spawning {ratsToSpawn} rats at position of {item}");
         for (var i = 0; i < ratsToSpawn; i++)
@@ -83,7 +102,7 @@ public class RatTracker : MapComponent
 
             spawnedRat.needs.food.CurLevelPercentage = 1f;
             spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
-            SpawnedToday++;
+            spawnedToday++;
         }
 
         if (!RatsMod.instance.Settings.ShowMessages || !map.areaManager.Home.ActiveCells.Contains(item.Position))

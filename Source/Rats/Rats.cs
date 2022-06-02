@@ -7,7 +7,8 @@ namespace Rats;
 [StaticConstructorOnStartup]
 public class Rats
 {
-    public static List<PawnKindDef> ValidRatRaces = new List<PawnKindDef>();
+    public static List<PawnKindDef> ValidRatRaces;
+    public static List<PawnKindDef> InsideRatRaces;
     public static readonly ThingDef MeatRotten;
     public static readonly List<ThingDef> AllAnimals;
 
@@ -23,11 +24,23 @@ public class Rats
             RatsMod.instance.Settings.ManualRats = new List<string>();
         }
 
+        if (RatsMod.instance.Settings.SpawnInside == null)
+        {
+            RatsMod.instance.Settings.SpawnInside = new List<string>();
+        }
+
         UpdateAvailableRats();
     }
 
     public static void UpdateAvailableRats()
     {
+        InsideRatRaces = new List<PawnKindDef>();
+        if (RatsMod.instance.Settings.SpawnInside.Any())
+        {
+            RatsMod.instance.Settings.SpawnInside.ForEach(s =>
+                InsideRatRaces.Add(DefDatabase<PawnKindDef>.GetNamedSilentFail(s)));
+        }
+
         if (RatsMod.instance.Settings.ManualRats?.Any() == true)
         {
             ValidRatRaces = new List<PawnKindDef>();

@@ -8,6 +8,7 @@ namespace Rats;
 /// </summary>
 internal class RatsModSettings : ModSettings
 {
+    public bool Biome;
     public bool Dessicated = true;
     public List<string> ManualRats = new List<string>();
     public int MaxPerDay = 5;
@@ -17,12 +18,14 @@ internal class RatsModSettings : ModSettings
     public float PercentScaria;
     public int RotDays = 5;
     public bool ShowMessages = true;
+    public List<string> SpawnInside = new List<string>();
     public bool VerboseLogging;
 
     public override void ExposeData()
     {
         base.ExposeData();
         Scribe_Values.Look(ref VerboseLogging, "VerboseLogging");
+        Scribe_Values.Look(ref Biome, "Biome");
         Scribe_Values.Look(ref ShowMessages, "ShowMessages", true);
         Scribe_Values.Look(ref Dessicated, "Dessicated", true);
         Scribe_Values.Look(ref MaxRats, "MaxRats", 3);
@@ -32,5 +35,6 @@ internal class RatsModSettings : ModSettings
         Scribe_Values.Look(ref MaxTotalRats, "MaxTotalRats");
         Scribe_Values.Look(ref PercentScaria, "PercentScaria");
         Scribe_Collections.Look(ref ManualRats, "ManualRats");
+        Scribe_Collections.Look(ref SpawnInside, "SpawnInside");
     }
 }

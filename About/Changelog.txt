@@ -1,5 +1,8 @@
 # Changelog for Rats
 
+1.3.6 - Added settings for respecting biomes and if to spawn inside
+
+
 1.3.5 - Added setting to not spawn rats from dessicated corpses
 
 

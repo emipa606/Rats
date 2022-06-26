@@ -152,8 +152,8 @@ internal class RatsMod : Mod
         if (!string.IsNullOrEmpty(searchText))
         {
             allAnimals = Rats.AllAnimals.Where(def =>
-                    def.label.ToLower().Contains(searchText.ToLower()) || def.modContentPack.Name.ToLower()
-                        .Contains(searchText.ToLower()))
+                    def.label.ToLower().Contains(searchText.ToLower()) || def.modContentPack?.Name.ToLower()
+                        .Contains(searchText.ToLower()) == true)
                 .ToList();
         }
 

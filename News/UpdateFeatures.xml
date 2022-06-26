@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
+﻿<?xml version="1.0" encoding="utf-8"?>
 <Defs>
   <HugsLib.UpdateFeatureDef Abstract="true" Name="Rats_UpdateFeatureBase">
     <modNameReadable>Rats</modNameReadable>
@@ -16,12 +16,12 @@
     <content>There is now an option to define how many of the rats will spawn with scaria, as requested on the mod-page.
 </content>
   </HugsLib.UpdateFeatureDef>
-	<HugsLib.UpdateFeatureDef ParentName="Rats_UpdateFeatureBase">
-		<defName>Rats_1_3_6</defName>
-		<assemblyVersion>1.3.6</assemblyVersion>
-		<content>There is now two new settings in the mod.
+  <HugsLib.UpdateFeatureDef ParentName="Rats_UpdateFeatureBase">
+    <defName>Rats_1_3_6</defName>
+    <assemblyVersion>1.3.6</assemblyVersion>
+    <content>There is now two new settings in the mod.
 Firstly there is an option to only allow spawning of rats if they are defined in the biome definition. 
 Secondly animals will no longer spawn inside unless defined in the settings.
 Since for example a rat could spawn inside a house, a vulture should probably not.</content>
-	</HugsLib.UpdateFeatureDef>
+  </HugsLib.UpdateFeatureDef>
 </Defs>

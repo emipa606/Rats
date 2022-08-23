@@ -10,18 +10,27 @@ namespace Rats;
 public class RatTracker : MapComponent
 {
     private static readonly Dictionary<Thing, CompRottable> rottableThings = new Dictionary<Thing, CompRottable>();
-    private readonly BiomeDef currentBiome;
+    private BiomeDef currentBiome;
     private int daysPassed;
     private int spawnedToday;
 
     public RatTracker(Map map) : base(map)
     {
-        currentBiome = map.Biome;
     }
 
     public override void MapComponentTick()
     {
         base.MapComponentTick();
+
+        if (currentBiome == null)
+        {
+            if (map?.Biome == null)
+            {
+                return;
+            }
+
+            currentBiome = map.Biome;
+        }
 
         if (Rats.ValidRatRaces == null || Rats.ValidRatRaces.Count == 0)
         {

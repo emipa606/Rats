@@ -12,6 +12,7 @@ There is also mod-options for selecting other animals, if animals should spawn b
 Will also spawn for meat from https://steamcommunity.com/sharedfiles/filedetails/?id=2466790513]Rotten Meat
 
 Works well with https://steamcommunity.com/sharedfiles/filedetails/?id=2503519676]Some Like It Rotten for making a corpse-based rat-farm
+A mod that can help with the rats is https://steamcommunity.com/sharedfiles/filedetails/?id=2827497888]Cats Hunt For Fun
 
 Performance-optimizations by Taranchuk
 	

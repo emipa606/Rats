@@ -1,5 +1,8 @@
 # Changelog for Rats
 
+1.3.8 - Moved the biome-caching a bit to not cause issues on loading a save
+
+
 1.3.7 - Things added via patches does not have a defined mod-name, this caused the search-field to fail. Should be fixed now
 
 

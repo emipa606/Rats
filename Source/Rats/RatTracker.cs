@@ -77,23 +77,28 @@ public class RatTracker : MapComponent
             return;
         }
 
+        Rats.LogMessage($"Found the following rotting items: {string.Join(", ", validThings)}");
+
         var item = validThings.RandomElementByWeight(WeightSelector);
-        var currentValidRats = Rats.ValidRatRaces.Intersect(currentBiome.AllWildAnimals);
-        if (!currentValidRats.Any())
+        var currentValidRats = Rats.ValidRatRaces;
+        if (RatsMod.instance.Settings.Biome)
         {
-            Rats.LogMessage("No valid rats found for this biome");
-            return;
+            currentValidRats = currentValidRats.Intersect(currentBiome.AllWildAnimals).ToList();
+            if (!currentValidRats.Any())
+            {
+                Rats.LogMessage("No valid rats found for this biome");
+                return;
+            }
         }
 
         if (item.Position.IsInside(item))
         {
-            currentValidRats = currentValidRats.Intersect(Rats.InsideRatRaces);
-        }
-
-        if (!currentValidRats.Any())
-        {
-            Rats.LogMessage("No valid rats found to spawn inside");
-            return;
+            currentValidRats = currentValidRats.Intersect(Rats.InsideRatRaces).ToList();
+            if (!currentValidRats.Any())
+            {
+                Rats.LogMessage($"No valid rats found to spawn inside at {item}");
+                return;
+            }
         }
 
         var ratDef = currentValidRats.RandomElement();

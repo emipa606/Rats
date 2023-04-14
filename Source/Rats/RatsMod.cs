@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using Mlie;
 using UnityEngine;
@@ -26,7 +25,7 @@ internal class RatsMod : Mod
     /// <summary>
     ///     The private settings
     /// </summary>
-    private RatsModSettings settings;
+    public readonly RatsModSettings Settings;
 
     /// <summary>
     ///     Constructor
@@ -36,32 +35,10 @@ internal class RatsMod : Mod
         : base(content)
     {
         instance = this;
-        if (instance.Settings.ManualRats == null)
-        {
-            instance.Settings.ManualRats = new List<string>();
-        }
+        Settings = GetSettings<RatsModSettings>();
 
         currentVersion =
-            VersionFromManifest.GetVersionFromModMetaData(
-                ModLister.GetActiveModWithIdentifier("Mlie.Rats"));
-    }
-
-    /// <summary>
-    ///     The instance-settings for the mod
-    /// </summary>
-    internal RatsModSettings Settings
-    {
-        get
-        {
-            if (settings == null)
-            {
-                settings = GetSettings<RatsModSettings>();
-            }
-
-            return settings;
-        }
-
-        set => settings = value;
+            VersionFromManifest.GetVersionFromModMetaData(content.ModMetaData);
     }
 
     public override string SettingsCategory()
@@ -81,29 +58,30 @@ internal class RatsMod : Mod
         listing_Standard.Begin(rect);
         listing_Standard.ColumnWidth = rect.width * 0.95f / 2f;
         listing_Standard.Gap();
-        Settings.MaxRats = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        Settings.MaxRats = (int)Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
             Settings.MaxRats, 1, 20, false,
             "Rats.maxrats.label".Translate(Settings.MaxRats), null, null, 1f);
         listing_Standard.Gap();
-        Settings.MaxPerDay = Math.Max(Settings.MaxRats, (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        Settings.MaxPerDay = Math.Max(Settings.MaxRats, (int)Widgets.HorizontalSlider_NewTemp(
+            listing_Standard.GetRect(20),
             Settings.MaxPerDay, Settings.MaxRats, 50, false,
             "Rats.maxperday.label".Translate(Settings.MaxPerDay), null, null, 1f));
         listing_Standard.Gap();
-        Settings.MaxTotalRats = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        Settings.MaxTotalRats = (int)Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
             Settings.MaxTotalRats, 0, 100, false,
             "Rats.maxtotalrats.label".Translate(Settings.MaxTotalRats), null, null, 1f);
         listing_Standard.Gap();
-        Settings.PercentScaria = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        Settings.PercentScaria = Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
             Settings.PercentScaria, 0, 1f, false,
             "Rats.percentscaria.label".Translate(Settings.PercentScaria * 100), null, null, 0.01f);
         listing_Standard.Gap();
-        Settings.MinDays = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        Settings.MinDays = Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
             Settings.MinDays, 0, 30, false,
             "Rats.mindays.label".Translate(Settings.MinDays), null, null, 0.1f);
         listing_Standard.Gap();
 
         var lastRect = listing_Standard.GetRect(20);
-        Settings.RotDays = (int)Widgets.HorizontalSlider(lastRect,
+        Settings.RotDays = (int)Widgets.HorizontalSlider_NewTemp(lastRect,
             Settings.RotDays, 1, 30, false,
             "Rats.rotdays.label".Translate(Settings.RotDays), null, null, 1f);
         listing_Standard.NewColumn();

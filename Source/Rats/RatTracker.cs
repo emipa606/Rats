@@ -91,7 +91,7 @@ public class RatTracker : MapComponent
             }
         }
 
-        if (item.Position.IsInside(item))
+        if (item.GetRoom()?.PsychologicallyOutdoors == false)
         {
             currentValidRats = currentValidRats.Intersect(Rats.InsideRatRaces).ToList();
             if (!currentValidRats.Any())
@@ -117,6 +117,7 @@ public class RatTracker : MapComponent
             spawnedRat.needs.food.CurLevelPercentage = 1f;
             spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
             spawnedToday++;
+            Current.Game.GetComponent<GameComponent_TotalRatTracker>().ratsSpawned++;
         }
 
         if (!RatsMod.instance.Settings.ShowMessages || !map.areaManager.Home.ActiveCells.Contains(item.Position))

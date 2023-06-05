@@ -15,6 +15,9 @@ Works well with https://steamcommunity.com/sharedfiles/filedetails/?id=250351967
 A mod that can help with the rats is https://steamcommunity.com/sharedfiles/filedetails/?id=2827497888]Cats Hunt For Fun
 
 Performance-optimizations by Taranchuk
+
+https://steamcommunity.com/sharedfiles/filedetails/?id=2288125657]![Image](https://i.imgur.com/kNldlMg.png)
+
 	
 ![Image](https://i.imgur.com/Ds0rBAD.png)
 
@@ -35,6 +38,4 @@ https://ko-fi.com/G2G55DDYD]![Image](https://i.imgur.com/VWG0yff.png)
 -  If you have the solution for a problem, please post it to the GitHub repository.
 
 
-
-
-https://steamcommunity.com/sharedfiles/filedetails/changelog/2496563418]Last updated 2023-04-14
+https://steamcommunity.com/sharedfiles/filedetails/changelog/2496563418]Last updated 2023-06-05

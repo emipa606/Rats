@@ -114,7 +114,7 @@ public class RatTracker : MapComponent
                 spawnedRat.health.AddHediff(HediffDefOf.Scaria);
             }
 
-            spawnedRat.needs.food.CurLevelPercentage = 1f;
+            spawnedRat.needs.food.CurLevelPercentage = 0.2f;
             spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
             spawnedToday++;
             Current.Game.GetComponent<GameComponent_TotalRatTracker>().ratsSpawned++;

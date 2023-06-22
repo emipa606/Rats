@@ -9,6 +9,8 @@ public class Rats
 {
     public static List<PawnKindDef> ValidRatRaces;
     public static List<PawnKindDef> InsideRatRaces;
+    public static List<PawnKindDef> CorpseRatRaces;
+    public static List<PawnKindDef> FoodRatRaces;
     public static readonly ThingDef MeatRotten;
     public static readonly List<ThingDef> AllAnimals;
 
@@ -29,6 +31,16 @@ public class Rats
             RatsMod.instance.Settings.SpawnInside = new List<string>();
         }
 
+        if (RatsMod.instance.Settings.SpawnCorpseOnly == null)
+        {
+            RatsMod.instance.Settings.SpawnCorpseOnly = new List<string>();
+        }
+
+        if (RatsMod.instance.Settings.SpawnFoodOnly == null)
+        {
+            RatsMod.instance.Settings.SpawnFoodOnly = new List<string>();
+        }
+
         UpdateAvailableRats();
     }
 
@@ -39,6 +51,20 @@ public class Rats
         {
             RatsMod.instance.Settings.SpawnInside.ForEach(s =>
                 InsideRatRaces.Add(DefDatabase<PawnKindDef>.GetNamedSilentFail(s)));
+        }
+
+        CorpseRatRaces = new List<PawnKindDef>();
+        if (RatsMod.instance.Settings.SpawnCorpseOnly.Any())
+        {
+            RatsMod.instance.Settings.SpawnCorpseOnly.ForEach(s =>
+                CorpseRatRaces.Add(DefDatabase<PawnKindDef>.GetNamedSilentFail(s)));
+        }
+
+        FoodRatRaces = new List<PawnKindDef>();
+        if (RatsMod.instance.Settings.SpawnFoodOnly.Any())
+        {
+            RatsMod.instance.Settings.SpawnFoodOnly.ForEach(s =>
+                FoodRatRaces.Add(DefDatabase<PawnKindDef>.GetNamedSilentFail(s)));
         }
 
         if (RatsMod.instance.Settings.ManualRats?.Any() == true)

@@ -20,4 +20,6 @@
   <Rats.search>搜索</Rats.search>
   <Rats.spawn.label>再生儿</Rats.spawn.label>
   <Rats.inside.label>内部</Rats.inside.label>
+  <Rats.foodonly.label>只有尸体</Rats.foodonly.label>
+  <Rats.corpseonly.label>只有食物</Rats.corpseonly.label>
 </LanguageData>

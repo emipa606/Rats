@@ -18,6 +18,8 @@ internal class RatsModSettings : ModSettings
     public float PercentScaria;
     public int RotDays = 5;
     public bool ShowMessages = true;
+    public List<string> SpawnCorpseOnly = new List<string>();
+    public List<string> SpawnFoodOnly = new List<string>();
     public List<string> SpawnInside = new List<string>();
     public bool VerboseLogging;
 
@@ -36,5 +38,7 @@ internal class RatsModSettings : ModSettings
         Scribe_Values.Look(ref PercentScaria, "PercentScaria");
         Scribe_Collections.Look(ref ManualRats, "ManualRats");
         Scribe_Collections.Look(ref SpawnInside, "SpawnInside");
+        Scribe_Collections.Look(ref SpawnFoodOnly, "SpawnFoodOnly");
+        Scribe_Collections.Look(ref SpawnCorpseOnly, "SpawnCorpseOnly");
     }
 }

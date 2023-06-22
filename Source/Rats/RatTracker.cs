@@ -101,6 +101,21 @@ public class RatTracker : MapComponent
             }
         }
 
+        if (item is Corpse)
+        {
+            currentValidRats.RemoveAll(Rats.FoodRatRaces.Contains);
+        }
+        else
+        {
+            currentValidRats.RemoveAll(Rats.CorpseRatRaces.Contains);
+        }
+
+        if (!currentValidRats.Any())
+        {
+            Rats.LogMessage($"No valid rats found to spawn at {item}");
+            return;
+        }
+
         var ratDef = currentValidRats.RandomElement();
         var ratsToSpawn = Rand.RangeInclusive(1, RatsMod.instance.Settings.MaxRats);
         Rats.LogMessage($"Spawning {ratsToSpawn} rats at position of {item}");
@@ -114,7 +129,7 @@ public class RatTracker : MapComponent
                 spawnedRat.health.AddHediff(HediffDefOf.Scaria);
             }
 
-            spawnedRat.needs.food.CurLevelPercentage = 0.2f;
+            spawnedRat.needs.food.CurLevelPercentage = 0f;
             spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
             spawnedToday++;
             Current.Game.GetComponent<GameComponent_TotalRatTracker>().ratsSpawned++;

@@ -106,21 +106,29 @@ internal class RatsMod : Mod
             Widgets.TextField(
                 new Rect(
                     lastRect.position +
-                    new Vector2(rect.width - searchSize.x - (iconSize.x * 3), 0),
+                    new Vector2(rect.width - searchSize.x - (iconSize.x * 3), -25f),
                     searchSize),
                 searchText);
         TooltipHandler.TipRegion(new Rect(
-            lastRect.position + new Vector2(rect.width - searchSize.x - (iconSize.x * 3), 0),
+            lastRect.position + new Vector2(rect.width - searchSize.x - (iconSize.x * 3), -25f),
             searchSize), "Rats.search".Translate());
         Text.Font = GameFont.Tiny;
         Widgets.Label(new Rect(
             lastRect.position +
-            new Vector2(rect.width - (iconSize.x * 2.4f), lastRect.height / 2f),
+            new Vector2(rect.width - (iconSize.x * 4.4f), lastRect.height / 6f),
             searchSize), "Rats.spawn.label".Translate());
         Widgets.Label(new Rect(
             lastRect.position +
-            new Vector2(rect.width - (iconSize.x * 1.4f), lastRect.height / 2f),
+            new Vector2(rect.width - (iconSize.x * 3.4f), lastRect.height / 1.5f),
             searchSize), "Rats.inside.label".Translate());
+        Widgets.Label(new Rect(
+            lastRect.position +
+            new Vector2(rect.width - (iconSize.x * 2.7f), lastRect.height / 6f),
+            searchSize), "Rats.foodonly.label".Translate());
+        Widgets.Label(new Rect(
+            lastRect.position +
+            new Vector2(rect.width - (iconSize.x * 1.4f), lastRect.height / 1.5f),
+            searchSize), "Rats.corpseonly.label".Translate());
 
         Text.Font = GameFont.Small;
         listing_Standard.End();
@@ -166,12 +174,22 @@ internal class RatsMod : Mod
                 rowRect.size - new Vector2(iconSize.x * 2, 0));
             var spawnAtAll = instance.Settings.ManualRats.Contains(animal.defName);
             var inside = instance.Settings.SpawnInside.Contains(animal.defName);
+            var corpseOnly = instance.Settings.SpawnCorpseOnly.Contains(animal.defName);
+            var foodOnly = instance.Settings.SpawnFoodOnly.Contains(animal.defName);
             var wasSpawnAtAll = spawnAtAll;
             var wasInside = inside;
+            var wascorpseOnly = corpseOnly;
+            var wasfoodOnly = foodOnly;
             Widgets.Label(nameRect, raceLabel);
-            Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x * 2, 0),
+            Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x * 4, 0),
                 ref spawnAtAll);
-            Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x, 0), ref inside);
+            Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x * 3, 0),
+                ref inside, 24F, !spawnAtAll);
+            Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x * 2, 0),
+                ref corpseOnly, 24F, !spawnAtAll);
+            Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x, 0),
+                ref foodOnly, 24F, !spawnAtAll);
+
             if (spawnAtAll != wasSpawnAtAll)
             {
                 if (spawnAtAll)
@@ -181,21 +199,62 @@ internal class RatsMod : Mod
                 else
                 {
                     instance.Settings.ManualRats.Remove(animal.defName);
+                    inside = false;
+                    corpseOnly = false;
+                    foodOnly = false;
                 }
             }
 
-            if (inside == wasInside)
+            if (inside != wasInside)
+            {
+                if (inside)
+                {
+                    instance.Settings.SpawnInside.Add(animal.defName);
+                }
+                else
+                {
+                    instance.Settings.SpawnInside.Remove(animal.defName);
+                }
+            }
+
+            if (corpseOnly != wascorpseOnly)
+            {
+                if (corpseOnly)
+                {
+                    instance.Settings.SpawnCorpseOnly.Add(animal.defName);
+                    if (instance.Settings.SpawnFoodOnly.Contains(animal.defName))
+                    {
+                        instance.Settings.SpawnFoodOnly.Remove(animal.defName);
+                    }
+                }
+                else
+                {
+                    if (instance.Settings.SpawnCorpseOnly.Contains(animal.defName))
+                    {
+                        instance.Settings.SpawnCorpseOnly.Remove(animal.defName);
+                    }
+                }
+            }
+
+            if (foodOnly == wasfoodOnly)
             {
                 continue;
             }
 
-            if (inside)
+            if (foodOnly)
             {
-                instance.Settings.SpawnInside.Add(animal.defName);
+                instance.Settings.SpawnFoodOnly.Add(animal.defName);
+                if (instance.Settings.SpawnCorpseOnly.Contains(animal.defName))
+                {
+                    instance.Settings.SpawnCorpseOnly.Remove(animal.defName);
+                }
             }
             else
             {
-                instance.Settings.SpawnInside.Remove(animal.defName);
+                if (instance.Settings.SpawnFoodOnly.Contains(animal.defName))
+                {
+                    instance.Settings.SpawnFoodOnly.Remove(animal.defName);
+                }
             }
         }
 

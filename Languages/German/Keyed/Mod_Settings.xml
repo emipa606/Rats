@@ -20,4 +20,6 @@
   <Rats.search>Suche</Rats.search>
   <Rats.spawn.label>Laich</Rats.spawn.label>
   <Rats.inside.label>Innerhalb</Rats.inside.label>
+  <Rats.foodonly.label>Nur Leichen</Rats.foodonly.label>
+  <Rats.corpseonly.label>Nur Lebensmittel</Rats.corpseonly.label>
 </LanguageData>

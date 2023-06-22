@@ -20,4 +20,6 @@
   <Rats.search>Recherche</Rats.search>
   <Rats.spawn.label>Le frayage</Rats.spawn.label>
   <Rats.inside.label>A l'intérieur</Rats.inside.label>
+  <Rats.foodonly.label>Seulement des cadavres</Rats.foodonly.label>
+  <Rats.corpseonly.label>Uniquement la nourriture</Rats.corpseonly.label>
 </LanguageData>

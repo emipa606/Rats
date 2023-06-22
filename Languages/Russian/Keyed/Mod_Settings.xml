@@ -20,4 +20,6 @@
   <Rats.search>Поиск</Rats.search>
   <Rats.spawn.label>Спаун</Rats.spawn.label>
   <Rats.inside.label>Внутри</Rats.inside.label>
+  <Rats.foodonly.label>Только трупы</Rats.foodonly.label>
+  <Rats.corpseonly.label>Только еда</Rats.corpseonly.label>
 </LanguageData>

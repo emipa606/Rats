@@ -19,4 +19,6 @@
   <Rats.search>Search</Rats.search>
   <Rats.spawn.label>Spawn</Rats.spawn.label>
   <Rats.inside.label>Inside</Rats.inside.label>
+  <Rats.foodonly.label>Only Corpses</Rats.foodonly.label>
+  <Rats.corpseonly.label>Only Food</Rats.corpseonly.label>
 </LanguageData>

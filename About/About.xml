@@ -22,7 +22,7 @@ Just like in real life!
 
 Uses rats from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2113851330]FancyRats[/url] and [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2115080957]SnowRats[/url] if loaded.
 More can be added via patches.
-There is also mod-options for selecting other animals, if animals should spawn based on biome and if they should be able to spawn inside.
+There is also mod-options for selecting other animals, if animals should spawn based on biome and if they should be able to spawn inside. Also options to limit to only corpses or non-corpses.
 Will also spawn for meat from [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2466790513]Rotten Meat[/url]
 
 Works well with [url=https://steamcommunity.com/sharedfiles/filedetails/?id=2503519676]Some Like It Rotten[/url] for making a corpse-based rat-farm
@@ -57,5 +57,5 @@ Since modding is just a hobby for me I expect no donations to keep modding. If y
 [*] Do not report errors by making a discussion-thread, I get no notification of that.
 [*] If you have the solution for a problem, please post it to the GitHub repository.
 [/list]
-[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2496563418]Last updated 2023-06-22[/url]</description>
+[url=https://steamcommunity.com/sharedfiles/filedetails/changelog/2496563418]Last updated 2023-08-22[/url]</description>
 </ModMetaData>

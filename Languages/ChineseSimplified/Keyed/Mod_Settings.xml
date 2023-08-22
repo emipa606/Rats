@@ -22,4 +22,5 @@
   <Rats.inside.label>内部</Rats.inside.label>
   <Rats.foodonly.label>只有尸体</Rats.foodonly.label>
   <Rats.corpseonly.label>只有食物</Rats.corpseonly.label>
+  <Rats.percentsterile.label>老鼠产卵不育：{0}%</Rats.percentsterile.label>
 </LanguageData>

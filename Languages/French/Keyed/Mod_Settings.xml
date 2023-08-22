@@ -22,4 +22,5 @@
   <Rats.inside.label>A l'intérieur</Rats.inside.label>
   <Rats.foodonly.label>Seulement des cadavres</Rats.foodonly.label>
   <Rats.corpseonly.label>Uniquement la nourriture</Rats.corpseonly.label>
+  <Rats.percentsterile.label>Les rats pondent stérilement : {0}%</Rats.percentsterile.label>
 </LanguageData>

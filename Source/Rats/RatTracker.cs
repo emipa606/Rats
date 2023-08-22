@@ -129,6 +129,11 @@ public class RatTracker : MapComponent
                 spawnedRat.health.AddHediff(HediffDefOf.Scaria);
             }
 
+            if (Rand.Chance(RatsMod.instance.Settings.PercentSterile))
+            {
+                spawnedRat.health.AddHediff(HediffDefOf.Sterilized);
+            }
+
             spawnedRat.needs.food.CurLevelPercentage = 0f;
             spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
             spawnedToday++;
@@ -150,6 +155,11 @@ public class RatTracker : MapComponent
         var rottenThings = new List<Thing>();
         foreach (var thing in map.listerThings.AllThings)
         {
+            if (thing.def == null)
+            {
+                continue;
+            }
+
             if (thing.def != null && thing.def == Rats.MeatRotten && thing.AmbientTemperature >= 10f)
             {
                 rottenThings.Add(thing);
@@ -162,39 +172,39 @@ public class RatTracker : MapComponent
                 rottableThings[thing] = compRottable;
             }
 
-            if (thing.def == null)
-            {
-                continue;
-            }
-
             if (compRottable == null)
             {
+                //Rats.LogMessage($"{thing} is not rottable");
                 continue;
             }
 
-            if (!(GenTemperature.RotRateAtTemperature(Mathf.RoundToInt(compRottable.parent.AmbientTemperature)) >=
-                  0.999f))
+            if (GenTemperature.RotRateAtTemperature(Mathf.RoundToInt(compRottable.parent.AmbientTemperature)) < 0.999f)
             {
+                Rats.LogMessage($"{thing} has too low temp");
                 continue;
             }
 
-            if (!(compRottable.PropsRot.daysToRotStart <= RatsMod.instance.Settings.RotDays))
+            if (compRottable.PropsRot.daysToRotStart > RatsMod.instance.Settings.RotDays)
             {
+                Rats.LogMessage($"{thing} rots in too many days: {compRottable.PropsRot.daysToRotStart}");
                 continue;
             }
 
-            if (!(compRottable.RotProgress > RatsMod.instance.Settings.MinDays * 60000))
+            if (compRottable.RotProgress <= RatsMod.instance.Settings.MinDays * GenDate.TicksPerDay)
             {
+                Rats.LogMessage($"{thing} has too small rot progress: {compRottable.RotProgress}");
                 continue;
             }
 
             if (thing.def.IsCorpse && thing.ParentHolder.IsEnclosingContainer())
             {
+                Rats.LogMessage($"{thing} is a corpse in a grave");
                 continue;
             }
 
             if (!RatsMod.instance.Settings.Dessicated && thing is Corpse corpse && corpse.IsDessicated())
             {
+                Rats.LogMessage($"{thing} is a dessicated corpse and not allowed to spawn from");
                 continue;
             }
 

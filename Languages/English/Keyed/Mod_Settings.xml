@@ -13,6 +13,7 @@
   <Rats.maxperday.label>Maximum rats to spawn per day: {0}</Rats.maxperday.label>
   <Rats.maxtotalrats.label>Maximum rats per map (0 = no limit): {0}</Rats.maxtotalrats.label>
   <Rats.percentscaria.label>Rats spawning with scaria: {0}%</Rats.percentscaria.label>
+  <Rats.percentsterile.label>Rats spawning sterile: {0}%</Rats.percentsterile.label>
   <Rats.rotdays.label>Will spawn on things that normally rots in {0} days</Rats.rotdays.label>
   <Rats.mindays.label>Will spawn on things have been unrefridgerated for at least {0} days</Rats.mindays.label>
   <Rats.message>Hungry rats have found rotting {0}</Rats.message>

@@ -1,5 +1,9 @@
 # Changelog for Rats
 
+1.4.5 - Added setting for making animals spawn sterile.
+Used DeepL to update translations for ChineseSimplified, French, German, Russian
+
+
 1.4.4 - Added settings to limit animals to only spawn on corpses or non-corpses.
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 

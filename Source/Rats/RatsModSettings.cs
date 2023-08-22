@@ -16,6 +16,7 @@ internal class RatsModSettings : ModSettings
     public int MaxTotalRats;
     public float MinDays = 1f;
     public float PercentScaria;
+    public float PercentSterile;
     public int RotDays = 5;
     public bool ShowMessages = true;
     public List<string> SpawnCorpseOnly = new List<string>();
@@ -36,6 +37,7 @@ internal class RatsModSettings : ModSettings
         Scribe_Values.Look(ref MinDays, "MinDays", 1f);
         Scribe_Values.Look(ref MaxTotalRats, "MaxTotalRats");
         Scribe_Values.Look(ref PercentScaria, "PercentScaria");
+        Scribe_Values.Look(ref PercentSterile, "PercentSterile");
         Scribe_Collections.Look(ref ManualRats, "ManualRats");
         Scribe_Collections.Look(ref SpawnInside, "SpawnInside");
         Scribe_Collections.Look(ref SpawnFoodOnly, "SpawnFoodOnly");

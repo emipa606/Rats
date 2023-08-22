@@ -22,4 +22,5 @@
   <Rats.inside.label>Innerhalb</Rats.inside.label>
   <Rats.foodonly.label>Nur Leichen</Rats.foodonly.label>
   <Rats.corpseonly.label>Nur Lebensmittel</Rats.corpseonly.label>
+  <Rats.percentsterile.label>Steril laichende Ratten: {0}%</Rats.percentsterile.label>
 </LanguageData>

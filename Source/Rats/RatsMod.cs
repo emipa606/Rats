@@ -75,11 +75,14 @@ internal class RatsMod : Mod
             Settings.PercentScaria, 0, 1f, false,
             "Rats.percentscaria.label".Translate(Settings.PercentScaria * 100), null, null, 0.01f);
         listing_Standard.Gap();
+        Settings.PercentSterile = Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
+            Settings.PercentSterile, 0, 1f, false,
+            "Rats.percentsterile.label".Translate(Settings.PercentSterile * 100), null, null, 0.01f);
+        listing_Standard.Gap();
         Settings.MinDays = Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
             Settings.MinDays, 0, 30, false,
             "Rats.mindays.label".Translate(Settings.MinDays), null, null, 0.1f);
         listing_Standard.Gap();
-
         var lastRect = listing_Standard.GetRect(20);
         Settings.RotDays = (int)Widgets.HorizontalSlider_NewTemp(lastRect,
             Settings.RotDays, 1, 30, false,
@@ -89,7 +92,6 @@ internal class RatsMod : Mod
             "Rats.dessicated.tooltip".Translate());
         listing_Standard.CheckboxLabeled("Rats.biome.label".Translate(), ref Settings.Biome,
             "Rats.biome.tooltip".Translate());
-        listing_Standard.Gap();
         listing_Standard.CheckboxLabeled("Rats.showmessages.label".Translate(), ref Settings.ShowMessages,
             "Rats.showmessages.tooltip".Translate());
         listing_Standard.CheckboxLabeled("Rats.logging.label".Translate(), ref Settings.VerboseLogging,

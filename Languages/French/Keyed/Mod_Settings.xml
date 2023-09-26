@@ -23,4 +23,6 @@
   <Rats.foodonly.label>Seulement des cadavres</Rats.foodonly.label>
   <Rats.corpseonly.label>Uniquement la nourriture</Rats.corpseonly.label>
   <Rats.percentsterile.label>Les rats pondent stérilement : {0}%</Rats.percentsterile.label>
+  <Rats.percenthungry.label>Rats reproducteurs hungerrate : {0}%</Rats.percenthungry.label>
+  <Rats.message_new>{0} {1} ont été trouvés pourris {2}</Rats.message_new>
 </LanguageData>

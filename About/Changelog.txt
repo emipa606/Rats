@@ -1,5 +1,9 @@
 # Changelog for Rats
 
+1.4.6 - Added setting for food-need of spawning animals.
+Used DeepL to update translations for ChineseSimplified, French, German, Russian
+
+
 1.4.5 - Added setting for making animals spawn sterile.
 Used DeepL to update translations for ChineseSimplified, French, German, Russian
 

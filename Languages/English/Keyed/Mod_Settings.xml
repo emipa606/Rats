@@ -4,8 +4,8 @@
   <Rats.logging.tooltip>Shows verbose logging, for finding errors</Rats.logging.tooltip>
   <Rats.showmessages.label>Show messages</Rats.showmessages.label>
   <Rats.showmessages.tooltip>Shows a message when rats spawn on an item in the home-area</Rats.showmessages.tooltip>
-  <Rats.dessicated.label>Spawn rats from dessicated corpses</Rats.dessicated.label>
-  <Rats.dessicated.tooltip>If unchecked rats will only spawn from corpses if they are not dessicated</Rats.dessicated.tooltip>
+  <Rats.dessicated.label>Spawn rats from desiccated corpses</Rats.dessicated.label>
+  <Rats.dessicated.tooltip>If unchecked rats will only spawn from corpses if they are not desiccated</Rats.dessicated.tooltip>
   <Rats.biome.label>Respect biome definitions</Rats.biome.label>
   <Rats.biome.tooltip>If checked, only rats that is defined as valid for the current biome will spawn</Rats.biome.tooltip>
   <Rats.version.label>Installed mod-version: {0}</Rats.version.label>
@@ -14,9 +14,11 @@
   <Rats.maxtotalrats.label>Maximum rats per map (0 = no limit): {0}</Rats.maxtotalrats.label>
   <Rats.percentscaria.label>Rats spawning with scaria: {0}%</Rats.percentscaria.label>
   <Rats.percentsterile.label>Rats spawning sterile: {0}%</Rats.percentsterile.label>
+  <Rats.percenthungry.label>Spawning rats hungerrate: {0}%</Rats.percenthungry.label>
   <Rats.rotdays.label>Will spawn on things that normally rots in {0} days</Rats.rotdays.label>
-  <Rats.mindays.label>Will spawn on things have been unrefridgerated for at least {0} days</Rats.mindays.label>
+  <Rats.mindays.label>Will spawn on things have been unrefrigerated for at least {0} days</Rats.mindays.label>
   <Rats.message>Hungry rats have found rotting {0}</Rats.message>
+  <Rats.message_new>{0} {1} have found rotting {2}</Rats.message_new>
   <Rats.search>Search</Rats.search>
   <Rats.spawn.label>Spawn</Rats.spawn.label>
   <Rats.inside.label>Inside</Rats.inside.label>

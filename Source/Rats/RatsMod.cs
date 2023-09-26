@@ -57,8 +57,7 @@ internal class RatsMod : Mod
         var listing_Standard = new Listing_Standard();
         listing_Standard.Begin(rect);
         listing_Standard.ColumnWidth = rect.width * 0.95f / 2f;
-        listing_Standard.Gap();
-        Settings.MaxRats = (int)Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
+        Settings.MaxRats = (int)Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(25),
             Settings.MaxRats, 1, 20, false,
             "Rats.maxrats.label".Translate(Settings.MaxRats), null, null, 1f);
         listing_Standard.Gap();
@@ -78,6 +77,10 @@ internal class RatsMod : Mod
         Settings.PercentSterile = Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
             Settings.PercentSterile, 0, 1f, false,
             "Rats.percentsterile.label".Translate(Settings.PercentSterile * 100), null, null, 0.01f);
+        listing_Standard.Gap();
+        Settings.PercentHungry = Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
+            Settings.PercentHungry, 0, 1f, false,
+            "Rats.percenthungry.label".Translate(Settings.PercentHungry * 100), null, null, 0.01f);
         listing_Standard.Gap();
         Settings.MinDays = Widgets.HorizontalSlider_NewTemp(listing_Standard.GetRect(20),
             Settings.MinDays, 0, 30, false,

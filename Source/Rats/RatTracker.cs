@@ -134,8 +134,12 @@ public class RatTracker : MapComponent
                 spawnedRat.health.AddHediff(HediffDefOf.Sterilized);
             }
 
-            spawnedRat.needs.food.CurLevelPercentage = 0f;
-            spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
+            spawnedRat.needs.food.CurLevelPercentage = 1f - RatsMod.instance.Settings.PercentHungry;
+            if (RatsMod.instance.Settings.PercentHungry > 0.5f)
+            {
+                spawnedRat.jobs.TryTakeOrderedJob(new Job(JobDefOf.Ingest, item));
+            }
+
             spawnedToday++;
             Current.Game.GetComponent<GameComponent_TotalRatTracker>().ratsSpawned++;
         }
@@ -145,8 +149,9 @@ public class RatTracker : MapComponent
             return;
         }
 
-        var message = new Message("Rats.message".Translate(item.Label), MessageTypeDefOf.NeutralEvent,
-            new LookTargets(item));
+        var message = new Message(
+            "Rats.message_new".Translate(ratsToSpawn, ratDef.label, item.Label),
+            MessageTypeDefOf.NeutralEvent, new LookTargets(item));
         Messages.Message(message);
     }
 

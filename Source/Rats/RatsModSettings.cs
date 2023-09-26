@@ -15,6 +15,7 @@ internal class RatsModSettings : ModSettings
     public int MaxRats = 3;
     public int MaxTotalRats;
     public float MinDays = 1f;
+    public float PercentHungry = 1f;
     public float PercentScaria;
     public float PercentSterile;
     public int RotDays = 5;
@@ -38,6 +39,7 @@ internal class RatsModSettings : ModSettings
         Scribe_Values.Look(ref MaxTotalRats, "MaxTotalRats");
         Scribe_Values.Look(ref PercentScaria, "PercentScaria");
         Scribe_Values.Look(ref PercentSterile, "PercentSterile");
+        Scribe_Values.Look(ref PercentHungry, "PercentHungry", 1f);
         Scribe_Collections.Look(ref ManualRats, "ManualRats");
         Scribe_Collections.Look(ref SpawnInside, "SpawnInside");
         Scribe_Collections.Look(ref SpawnFoodOnly, "SpawnFoodOnly");

@@ -23,4 +23,6 @@
   <Rats.foodonly.label>Только трупы</Rats.foodonly.label>
   <Rats.corpseonly.label>Только еда</Rats.corpseonly.label>
   <Rats.percentsterile.label>Крысы нерестятся стерильно: {0}%</Rats.percentsterile.label>
+  <Rats.percenthungry.label>Нерест крыс hungerrate: {0}%</Rats.percenthungry.label>
+  <Rats.message_new>{0} {1} нашли гниение {2}</Rats.message_new>
 </LanguageData>

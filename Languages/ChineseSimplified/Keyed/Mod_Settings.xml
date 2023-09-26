@@ -23,4 +23,6 @@
   <Rats.foodonly.label>只有尸体</Rats.foodonly.label>
   <Rats.corpseonly.label>只有食物</Rats.corpseonly.label>
   <Rats.percentsterile.label>老鼠产卵不育：{0}%</Rats.percentsterile.label>
+  <Rats.percenthungry.label>产卵鼠饥饿率：{0}%</Rats.percenthungry.label>
+  <Rats.message_new>{0} {1} 发现腐烂的 {2}</Rats.message_new>
 </LanguageData>

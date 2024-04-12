@@ -7,16 +7,12 @@ using Verse.AI;
 
 namespace Rats;
 
-public class RatTracker : MapComponent
+public class RatTracker(Map map) : MapComponent(map)
 {
     private static readonly Dictionary<Thing, CompRottable> rottableThings = new Dictionary<Thing, CompRottable>();
     private BiomeDef currentBiome;
     private int daysPassed;
     private int spawnedToday;
-
-    public RatTracker(Map map) : base(map)
-    {
-    }
 
     public override void MapComponentTick()
     {

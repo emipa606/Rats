@@ -4,5 +4,5 @@ namespace Rats;
 
 public class RatExtension : DefModExtension
 {
-    public bool IsRat = true;
+    public readonly bool IsRat = true;
 }

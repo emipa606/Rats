@@ -10,7 +10,7 @@ internal class RatsModSettings : ModSettings
 {
     public bool Biome;
     public bool Dessicated = true;
-    public List<string> ManualRats = new List<string>();
+    public List<string> ManualRats = [];
     public int MaxPerDay = 5;
     public int MaxRats = 3;
     public int MaxTotalRats;
@@ -20,9 +20,9 @@ internal class RatsModSettings : ModSettings
     public float PercentSterile;
     public int RotDays = 5;
     public bool ShowMessages = true;
-    public List<string> SpawnCorpseOnly = new List<string>();
-    public List<string> SpawnFoodOnly = new List<string>();
-    public List<string> SpawnInside = new List<string>();
+    public List<string> SpawnCorpseOnly = [];
+    public List<string> SpawnFoodOnly = [];
+    public List<string> SpawnInside = [];
     public bool VerboseLogging;
 
     public override void ExposeData()

@@ -20,25 +20,25 @@ public class Rats
             .Where(def => def.race is { Animal: true })
             .OrderBy(def => def.label).ToList();
         MeatRotten = DefDatabase<ThingDef>.GetNamedSilentFail("MeatRotten");
-        ValidRatRaces = new List<PawnKindDef>();
+        ValidRatRaces = [];
         if (RatsMod.instance.Settings.ManualRats == null)
         {
-            RatsMod.instance.Settings.ManualRats = new List<string>();
+            RatsMod.instance.Settings.ManualRats = [];
         }
 
         if (RatsMod.instance.Settings.SpawnInside == null)
         {
-            RatsMod.instance.Settings.SpawnInside = new List<string>();
+            RatsMod.instance.Settings.SpawnInside = [];
         }
 
         if (RatsMod.instance.Settings.SpawnCorpseOnly == null)
         {
-            RatsMod.instance.Settings.SpawnCorpseOnly = new List<string>();
+            RatsMod.instance.Settings.SpawnCorpseOnly = [];
         }
 
         if (RatsMod.instance.Settings.SpawnFoodOnly == null)
         {
-            RatsMod.instance.Settings.SpawnFoodOnly = new List<string>();
+            RatsMod.instance.Settings.SpawnFoodOnly = [];
         }
 
         UpdateAvailableRats();
@@ -46,21 +46,21 @@ public class Rats
 
     public static void UpdateAvailableRats()
     {
-        InsideRatRaces = new List<PawnKindDef>();
+        InsideRatRaces = [];
         if (RatsMod.instance.Settings.SpawnInside.Any())
         {
             RatsMod.instance.Settings.SpawnInside.ForEach(s =>
                 InsideRatRaces.Add(DefDatabase<PawnKindDef>.GetNamedSilentFail(s)));
         }
 
-        CorpseRatRaces = new List<PawnKindDef>();
+        CorpseRatRaces = [];
         if (RatsMod.instance.Settings.SpawnCorpseOnly.Any())
         {
             RatsMod.instance.Settings.SpawnCorpseOnly.ForEach(s =>
                 CorpseRatRaces.Add(DefDatabase<PawnKindDef>.GetNamedSilentFail(s)));
         }
 
-        FoodRatRaces = new List<PawnKindDef>();
+        FoodRatRaces = [];
         if (RatsMod.instance.Settings.SpawnFoodOnly.Any())
         {
             RatsMod.instance.Settings.SpawnFoodOnly.ForEach(s =>
@@ -69,7 +69,7 @@ public class Rats
 
         if (RatsMod.instance.Settings.ManualRats?.Any() == true)
         {
-            ValidRatRaces = new List<PawnKindDef>();
+            ValidRatRaces = [];
             foreach (var settingsManualRat in RatsMod.instance.Settings.ManualRats)
             {
                 ValidRatRaces.Add(PawnKindDef.Named(settingsManualRat));
@@ -100,7 +100,7 @@ public class Rats
         {
             if (RatsMod.instance.Settings.ManualRats == null)
             {
-                RatsMod.instance.Settings.ManualRats = new List<string>();
+                RatsMod.instance.Settings.ManualRats = [];
             }
 
             foreach (var validRatRace in ValidRatRaces)

@@ -17,7 +17,7 @@ public class Rats
     static Rats()
     {
         AllAnimals = DefDatabase<ThingDef>.AllDefsListForReading
-            .Where(def => def.race is { Animal: true })
+            .Where(def => def.race is { Animal: true } && !def.IsCorpse)
             .OrderBy(def => def.label).ToList();
         MeatRotten = DefDatabase<ThingDef>.GetNamedSilentFail("MeatRotten");
         ValidRatRaces = [];

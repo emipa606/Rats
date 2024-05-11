@@ -79,7 +79,14 @@ public class RatTracker(Map map) : MapComponent(map)
         var currentValidRats = Rats.ValidRatRaces;
         if (RatsMod.instance.Settings.Biome)
         {
-            currentValidRats = currentValidRats.Intersect(currentBiome.AllWildAnimals).ToList();
+            var allBiomeAnimals =
+                DefDatabase<PawnKindDef>.AllDefs.Where(def => currentBiome.CommonalityOfAnimal(def) > 0);
+            if (Find.WorldGrid[map.Tile].pollution > 0)
+            {
+                allBiomeAnimals = currentBiome.AllWildAnimals;
+            }
+
+            currentValidRats = currentValidRats.Intersect(allBiomeAnimals).ToList();
             if (!currentValidRats.Any())
             {
                 Rats.LogMessage("No valid rats found for this biome");

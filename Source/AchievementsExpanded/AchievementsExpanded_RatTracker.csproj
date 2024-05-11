@@ -6,7 +6,7 @@
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.5.1</FileVersion>
+    <FileVersion>1.5.2</FileVersion>
   </PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
@@ -15,15 +15,10 @@
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
     <Reference Include="VanillaAchievementsExpanded">
-      <HintPath>..\..\..\VanillaAchievementsExpanded\1.5\Assemblies\AchievementsExpanded.dll</HintPath>
-      <CopyLocal>False</CopyLocal>
-      <Private>false</Private>
-    </Reference>
-    <!--<Reference Include="VanillaAchievementsExpanded">
-		  <HintPath>..\..\..\..\..\..\workshop\content\294100\2288125657\v1.4\Assemblies\AchievementsExpanded.dll</HintPath>
+		  <HintPath>..\..\..\..\..\..\workshop\content\294100\2288125657\1.5\Assemblies\AchievementsExpanded.dll</HintPath>
 		  <CopyLocal>False</CopyLocal>
 		  <Private>false</Private>
-	  </Reference>-->
+	  </Reference>
     <ProjectReference Include="..\Rats\Rats.csproj">
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
       <CopyLocal>False</CopyLocal>

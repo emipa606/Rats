@@ -1,4 +1,4 @@
-﻿<?xml version="1.0" encoding="utf-8"?>
+<?xml version="1.0" encoding="utf-8"?>
 <LanguageData>
   <Rats.logging.label>Enable verbose logging</Rats.logging.label>
   <Rats.logging.tooltip>Shows verbose logging, for finding errors</Rats.logging.tooltip>

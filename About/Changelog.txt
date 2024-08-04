@@ -1,5 +1,8 @@
 # Changelog for Rats
 
+1.5.3 - Fixed load-order relative to Vanilla Achievements
+
+
 1.5.2 - Fixed corpses showing in settings as well as polluted animals spawning in a non-polluted biome
 
 

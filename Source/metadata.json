@@ -2,7 +2,14 @@
   "Continued": false,
   "CanAdd": "0",
   "CanRemove": "0",
-  "PreviewVersion": "1.5",
+  "PreviewVersion": "1.6",
   "SocialImageSet": true,
-  "FundingSet": true
+  "FundingSet": true,
+  "LastXmlCleaning": "2025-07-01T20:11:57.9351001+02:00",
+  "Patches": true,
+  "Defs": false,
+  "Assemblies": true,
+  "LinesOfCode": 30455.0,
+  "LinesOfXML": 1353.0,
+  "SearchTags": " pest control"
 }

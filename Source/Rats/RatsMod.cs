@@ -15,11 +15,11 @@ internal class RatsMod : Mod
     public static RatsMod instance;
 
     private static string currentVersion;
-    private static readonly Vector2 searchSize = new Vector2(200f, 25f);
-    private static readonly Vector2 iconSize = new Vector2(58f, 58f);
+    private static readonly Vector2 searchSize = new(200f, 25f);
+    private static readonly Vector2 iconSize = new(58f, 58f);
     private static string searchText = "";
     private static Vector2 scrollPosition;
-    private static readonly Color alternateBackground = new Color(0.2f, 0.2f, 0.2f, 0.5f);
+    private static readonly Color alternateBackground = new(0.2f, 0.2f, 0.2f, 0.5f);
 
 
     /// <summary>
@@ -54,56 +54,56 @@ internal class RatsMod : Mod
     {
         base.DoSettingsWindowContents(rect);
 
-        var listing_Standard = new Listing_Standard();
-        listing_Standard.Begin(rect);
-        listing_Standard.ColumnWidth = rect.width * 0.95f / 2f;
-        Settings.MaxRats = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(25),
+        var listingStandard = new Listing_Standard();
+        listingStandard.Begin(rect);
+        listingStandard.ColumnWidth = rect.width * 0.95f / 2f;
+        Settings.MaxRats = (int)Widgets.HorizontalSlider(listingStandard.GetRect(25),
             Settings.MaxRats, 1, 20, false,
             "Rats.maxrats.label".Translate(Settings.MaxRats), null, null, 1f);
-        listing_Standard.Gap();
+        listingStandard.Gap();
         Settings.MaxPerDay = Math.Max(Settings.MaxRats, (int)Widgets.HorizontalSlider(
-            listing_Standard.GetRect(20),
+            listingStandard.GetRect(20),
             Settings.MaxPerDay, Settings.MaxRats, 50, false,
             "Rats.maxperday.label".Translate(Settings.MaxPerDay), null, null, 1f));
-        listing_Standard.Gap();
-        Settings.MaxTotalRats = (int)Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        listingStandard.Gap();
+        Settings.MaxTotalRats = (int)Widgets.HorizontalSlider(listingStandard.GetRect(20),
             Settings.MaxTotalRats, 0, 100, false,
             "Rats.maxtotalrats.label".Translate(Settings.MaxTotalRats), null, null, 1f);
-        listing_Standard.Gap();
-        Settings.PercentScaria = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        listingStandard.Gap();
+        Settings.PercentScaria = Widgets.HorizontalSlider(listingStandard.GetRect(20),
             Settings.PercentScaria, 0, 1f, false,
             "Rats.percentscaria.label".Translate(Settings.PercentScaria * 100), null, null, 0.01f);
-        listing_Standard.Gap();
-        Settings.PercentSterile = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        listingStandard.Gap();
+        Settings.PercentSterile = Widgets.HorizontalSlider(listingStandard.GetRect(20),
             Settings.PercentSterile, 0, 1f, false,
             "Rats.percentsterile.label".Translate(Settings.PercentSterile * 100), null, null, 0.01f);
-        listing_Standard.Gap();
-        Settings.PercentHungry = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        listingStandard.Gap();
+        Settings.PercentHungry = Widgets.HorizontalSlider(listingStandard.GetRect(20),
             Settings.PercentHungry, 0, 1f, false,
             "Rats.percenthungry.label".Translate(Settings.PercentHungry * 100), null, null, 0.01f);
-        listing_Standard.Gap();
-        Settings.MinDays = Widgets.HorizontalSlider(listing_Standard.GetRect(20),
+        listingStandard.Gap();
+        Settings.MinDays = Widgets.HorizontalSlider(listingStandard.GetRect(20),
             Settings.MinDays, 0, 30, false,
             "Rats.mindays.label".Translate(Settings.MinDays), null, null, 0.1f);
-        listing_Standard.Gap();
-        var lastRect = listing_Standard.GetRect(20);
+        listingStandard.Gap();
+        var lastRect = listingStandard.GetRect(20);
         Settings.RotDays = (int)Widgets.HorizontalSlider(lastRect,
             Settings.RotDays, 1, 30, false,
             "Rats.rotdays.label".Translate(Settings.RotDays), null, null, 1f);
-        listing_Standard.NewColumn();
-        listing_Standard.CheckboxLabeled("Rats.dessicated.label".Translate(), ref Settings.Dessicated,
+        listingStandard.NewColumn();
+        listingStandard.CheckboxLabeled("Rats.dessicated.label".Translate(), ref Settings.Desiccated,
             "Rats.dessicated.tooltip".Translate());
-        listing_Standard.CheckboxLabeled("Rats.biome.label".Translate(), ref Settings.Biome,
+        listingStandard.CheckboxLabeled("Rats.biome.label".Translate(), ref Settings.Biome,
             "Rats.biome.tooltip".Translate());
-        listing_Standard.CheckboxLabeled("Rats.showmessages.label".Translate(), ref Settings.ShowMessages,
+        listingStandard.CheckboxLabeled("Rats.showmessages.label".Translate(), ref Settings.ShowMessages,
             "Rats.showmessages.tooltip".Translate());
-        listing_Standard.CheckboxLabeled("Rats.logging.label".Translate(), ref Settings.VerboseLogging,
+        listingStandard.CheckboxLabeled("Rats.logging.label".Translate(), ref Settings.VerboseLogging,
             "Rats.logging.tooltip".Translate());
         if (currentVersion != null)
         {
-            listing_Standard.Gap();
+            listingStandard.Gap();
             GUI.contentColor = Color.gray;
-            listing_Standard.Label("Rats.version.label".Translate(currentVersion));
+            listingStandard.Label("Rats.version.label".Translate(currentVersion));
             GUI.contentColor = Color.white;
         }
 
@@ -136,7 +136,7 @@ internal class RatsMod : Mod
             searchSize), "Rats.corpseonly.label".Translate());
 
         Text.Font = GameFont.Small;
-        listing_Standard.End();
+        listingStandard.End();
 
 
         var allAnimals = Rats.AllAnimals;
@@ -173,7 +173,7 @@ internal class RatsMod : Mod
             }
 
             var raceLabel = $"{animal.label.CapitalizeFirst()} ({animal.defName}) - {modInfo}";
-            DrawIcon(animal,
+            drawIcon(animal,
                 new Rect(rowRect.position, iconSize));
             var nameRect = new Rect(rowRect.position + new Vector2(iconSize.x, 0),
                 rowRect.size - new Vector2(iconSize.x * 2, 0));
@@ -183,8 +183,8 @@ internal class RatsMod : Mod
             var foodOnly = instance.Settings.SpawnFoodOnly.Contains(animal.defName);
             var wasSpawnAtAll = spawnAtAll;
             var wasInside = inside;
-            var wascorpseOnly = corpseOnly;
-            var wasfoodOnly = foodOnly;
+            var wasCorpseOnly = corpseOnly;
+            var wasFoodOnly = foodOnly;
             Widgets.Label(nameRect, raceLabel);
             Widgets.Checkbox(rowRect.position + new Vector2(rowRect.width, 0) - new Vector2(iconSize.x * 4, 0),
                 ref spawnAtAll);
@@ -222,7 +222,7 @@ internal class RatsMod : Mod
                 }
             }
 
-            if (corpseOnly != wascorpseOnly)
+            if (corpseOnly != wasCorpseOnly)
             {
                 if (corpseOnly)
                 {
@@ -241,7 +241,7 @@ internal class RatsMod : Mod
                 }
             }
 
-            if (foodOnly == wasfoodOnly)
+            if (foodOnly == wasFoodOnly)
             {
                 continue;
             }
@@ -267,7 +267,7 @@ internal class RatsMod : Mod
         Widgets.EndScrollView();
     }
 
-    private void DrawIcon(ThingDef animal, Rect rect)
+    private static void drawIcon(ThingDef animal, Rect rect)
     {
         var pawnKind = DefDatabase<PawnKindDef>.GetNamedSilentFail(animal.defName);
 

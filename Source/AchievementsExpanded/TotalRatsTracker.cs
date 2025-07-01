@@ -6,9 +6,9 @@ namespace Rats;
 
 public class TotalRatsTracker : TrackerBase
 {
-    public int count = 1;
+    private int count = 1;
 
-    [Unsaved] protected int triggeredCount; //Only for display
+    [Unsaved] private int triggeredCount; //Only for display
 
     public TotalRatsTracker()
     {
@@ -19,11 +19,7 @@ public class TotalRatsTracker : TrackerBase
         count = reference.count;
     }
 
-    public override string Key
-    {
-        get => "TotalRatsCurrentTracker";
-        set { }
-    }
+    public override string Key => "TotalRatsCurrentTracker";
 
     public override Func<bool> AttachToLongTick => Trigger;
 

@@ -1,0 +1,7 @@
+<Solution>
+  <Configurations>
+    <BuildType Name="Release" />
+  </Configurations>
+  <Project Path="AchievementsExpanded/AchievementsExpanded_RatTracker.csproj" />
+  <Project Path="Rats/Rats.csproj" />
+</Solution>

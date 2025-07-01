@@ -9,7 +9,7 @@ namespace Rats;
 
 public class RatTracker(Map map) : MapComponent(map)
 {
-    private static readonly Dictionary<Thing, CompRottable> rottableThings = new Dictionary<Thing, CompRottable>();
+    private static readonly Dictionary<Thing, CompRottable> rottableThings = new();
     private BiomeDef currentBiome;
     private int daysPassed;
     private int spawnedToday;
@@ -66,7 +66,7 @@ public class RatTracker(Map map) : MapComponent(map)
             }
         }
 
-        var validThings = GetRottenThings();
+        var validThings = getRottenThings();
         if (!validThings.Any())
         {
             Rats.LogMessage("Could not find any rotting things on the map");
@@ -158,7 +158,7 @@ public class RatTracker(Map map) : MapComponent(map)
         Messages.Message(message);
     }
 
-    private List<Thing> GetRottenThings()
+    private List<Thing> getRottenThings()
     {
         var rottenThings = new List<Thing>();
         foreach (var thing in map.listerThings.AllThings)
@@ -210,7 +210,7 @@ public class RatTracker(Map map) : MapComponent(map)
                 continue;
             }
 
-            if (!RatsMod.instance.Settings.Dessicated && thing is Corpse corpse && corpse.IsDessicated())
+            if (!RatsMod.instance.Settings.Desiccated && thing is Corpse corpse && corpse.IsDessicated())
             {
                 Rats.LogMessage($"{thing} is a dessicated corpse and not allowed to spawn from");
                 continue;
@@ -222,7 +222,7 @@ public class RatTracker(Map map) : MapComponent(map)
         return rottenThings;
     }
 
-    private float WeightSelector(Thing arg)
+    private static float WeightSelector(Thing arg)
     {
         if (arg.def != null && arg.def == Rats.MeatRotten)
         {

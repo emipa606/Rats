@@ -21,25 +21,13 @@ public class Rats
             .OrderBy(def => def.label).ToList();
         MeatRotten = DefDatabase<ThingDef>.GetNamedSilentFail("MeatRotten");
         ValidRatRaces = [];
-        if (RatsMod.instance.Settings.ManualRats == null)
-        {
-            RatsMod.instance.Settings.ManualRats = [];
-        }
+        RatsMod.instance.Settings.ManualRats ??= [];
 
-        if (RatsMod.instance.Settings.SpawnInside == null)
-        {
-            RatsMod.instance.Settings.SpawnInside = [];
-        }
+        RatsMod.instance.Settings.SpawnInside ??= [];
 
-        if (RatsMod.instance.Settings.SpawnCorpseOnly == null)
-        {
-            RatsMod.instance.Settings.SpawnCorpseOnly = [];
-        }
+        RatsMod.instance.Settings.SpawnCorpseOnly ??= [];
 
-        if (RatsMod.instance.Settings.SpawnFoodOnly == null)
-        {
-            RatsMod.instance.Settings.SpawnFoodOnly = [];
-        }
+        RatsMod.instance.Settings.SpawnFoodOnly ??= [];
 
         UpdateAvailableRats();
     }
@@ -98,10 +86,7 @@ public class Rats
         }
         else
         {
-            if (RatsMod.instance.Settings.ManualRats == null)
-            {
-                RatsMod.instance.Settings.ManualRats = [];
-            }
+            RatsMod.instance.Settings.ManualRats ??= [];
 
             foreach (var validRatRace in ValidRatRaces)
             {

@@ -19,7 +19,17 @@ public class TotalRatsTracker : TrackerBase
         count = reference.count;
     }
 
-    public override string Key => "TotalRatsCurrentTracker";
+    public override string Key
+    {
+        get
+        {
+            return "TotalRatsCurrentTracker";
+        }
+        set
+        {
+            Key = value;
+        }
+    }
 
     public override Func<bool> AttachToLongTick => Trigger;
 
@@ -32,7 +42,6 @@ public class TotalRatsTracker : TrackerBase
 
 
     public override bool UnlockOnStartup => Trigger();
-
 
     public override void ExposeData()
     {

@@ -1,5 +1,8 @@
 # Changelog for Rats
 
+1.6.1 - Fixed the compatibility with Vanilla Achievements Expanded
+
+
 1.6.0 - Mod updated for 1.6 and passed autotests
 
 

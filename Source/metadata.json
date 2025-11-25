@@ -5,11 +5,12 @@
   "PreviewVersion": "1.6",
   "SocialImageSet": true,
   "FundingSet": true,
-  "LastXmlCleaning": "2025-07-01T20:11:57.9351001+02:00",
+  "LastXmlCleaning": "2025-11-25T22:25:26.6710873+01:00",
   "Patches": true,
   "Defs": false,
   "Assemblies": true,
-  "LinesOfCode": 30455.0,
-  "LinesOfXML": 1353.0,
-  "SearchTags": " pest control"
+  "LinesOfCode": 30580,
+  "LinesOfXML": 1353,
+  "SearchTags": " pest control",
+  "CodeBaseSize": 71
 }

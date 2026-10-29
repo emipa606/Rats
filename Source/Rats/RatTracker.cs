@@ -55,15 +55,12 @@ public class RatTracker(Map map) : MapComponent(map)
             return;
         }
 
-        if (RatsMod.instance.Settings.MaxTotalRats > 0)
+        if (RatsMod.instance.Settings.MaxTotalRats > 0 && (from pawn in map.mapPawns.AllPawnsSpawned
+                where Rats.ValidRatRaces.Contains(pawn.def.race.AnyPawnKind)
+                select pawn).Count() >= RatsMod.instance.Settings.MaxTotalRats)
         {
-            if ((from pawn in map.mapPawns.AllPawnsSpawned
-                    where Rats.ValidRatRaces.Contains(pawn.def.race.AnyPawnKind)
-                    select pawn).Count() >= RatsMod.instance.Settings.MaxTotalRats)
-            {
-                Rats.LogMessage("Maximum rats already spawned on this map");
-                return;
-            }
+            Rats.LogMessage("Maximum rats already spawned on this map");
+            return;
         }
 
         var validThings = getRottenThings();
@@ -182,7 +179,6 @@ public class RatTracker(Map map) : MapComponent(map)
 
             if (compRottable == null)
             {
-                //Rats.LogMessage($"{thing} is not rottable");
                 continue;
             }
 
@@ -204,7 +200,7 @@ public class RatTracker(Map map) : MapComponent(map)
                 continue;
             }
 
-            if (thing.def.IsCorpse && thing.ParentHolder.IsEnclosingContainer())
+            if (thing.def is { IsCorpse: true } && thing.ParentHolder.IsEnclosingContainer())
             {
                 Rats.LogMessage($"{thing} is a corpse in a grave");
                 continue;

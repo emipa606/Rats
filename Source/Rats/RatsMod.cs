@@ -49,14 +49,14 @@ internal class RatsMod : Mod
     /// <summary>
     ///     The settings-window
     /// </summary>
-    /// <param name="rect"></param>
-    public override void DoSettingsWindowContents(Rect rect)
+    /// <param name="inRect"></param>
+    public override void DoSettingsWindowContents(Rect inRect)
     {
-        base.DoSettingsWindowContents(rect);
+        base.DoSettingsWindowContents(inRect);
 
         var listingStandard = new Listing_Standard();
-        listingStandard.Begin(rect);
-        listingStandard.ColumnWidth = rect.width * 0.95f / 2f;
+        listingStandard.Begin(inRect);
+        listingStandard.ColumnWidth = inRect.width * 0.95f / 2f;
         Settings.MaxRats = (int)Widgets.HorizontalSlider(listingStandard.GetRect(25),
             Settings.MaxRats, 1, 20, false,
             "Rats.maxrats.label".Translate(Settings.MaxRats), null, null, 1f);
@@ -111,28 +111,28 @@ internal class RatsMod : Mod
             Widgets.TextField(
                 new Rect(
                     lastRect.position +
-                    new Vector2(rect.width - searchSize.x - (iconSize.x * 3), -25f),
+                    new Vector2(inRect.width - searchSize.x - (iconSize.x * 3), -25f),
                     searchSize),
                 searchText);
         TooltipHandler.TipRegion(new Rect(
-            lastRect.position + new Vector2(rect.width - searchSize.x - (iconSize.x * 3), -25f),
+            lastRect.position + new Vector2(inRect.width - searchSize.x - (iconSize.x * 3), -25f),
             searchSize), "Rats.search".Translate());
         Text.Font = GameFont.Tiny;
         Widgets.Label(new Rect(
             lastRect.position +
-            new Vector2(rect.width - (iconSize.x * 4.4f), lastRect.height / 6f),
+            new Vector2(inRect.width - (iconSize.x * 4.4f), lastRect.height / 6f),
             searchSize), "Rats.spawn.label".Translate());
         Widgets.Label(new Rect(
             lastRect.position +
-            new Vector2(rect.width - (iconSize.x * 3.4f), lastRect.height / 1.5f),
+            new Vector2(inRect.width - (iconSize.x * 3.4f), lastRect.height / 1.5f),
             searchSize), "Rats.inside.label".Translate());
         Widgets.Label(new Rect(
             lastRect.position +
-            new Vector2(rect.width - (iconSize.x * 2.7f), lastRect.height / 6f),
+            new Vector2(inRect.width - (iconSize.x * 2.7f), lastRect.height / 6f),
             searchSize), "Rats.foodonly.label".Translate());
         Widgets.Label(new Rect(
             lastRect.position +
-            new Vector2(rect.width - (iconSize.x * 1.4f), lastRect.height / 1.5f),
+            new Vector2(inRect.width - (iconSize.x * 1.4f), lastRect.height / 1.5f),
             searchSize), "Rats.corpseonly.label".Translate());
 
         Text.Font = GameFont.Small;
@@ -148,10 +148,10 @@ internal class RatsMod : Mod
                 .ToList();
         }
 
-        var borderRect = rect;
+        var borderRect = inRect;
         borderRect.y += lastRect.y + 30;
         borderRect.height -= lastRect.y + 30;
-        var scrollContentRect = rect;
+        var scrollContentRect = inRect;
         scrollContentRect.height = allAnimals.Count * 61f;
         scrollContentRect.width -= 20;
         scrollContentRect.x = 0;
@@ -271,9 +271,14 @@ internal class RatsMod : Mod
     {
         var pawnKind = DefDatabase<PawnKindDef>.GetNamedSilentFail(animal.defName);
 
-        var texture2D = pawnKind?.lifeStages?.Last()?.bodyGraphicData?.Graphic?.MatSingle?.mainTexture;
+        var texture2D = pawnKind?.lifeStages?[^1]?.bodyGraphicData?.Graphic?.MatSingle?.mainTexture;
 
         if (texture2D == null)
+        {
+            return;
+        }
+
+        if (pawnKind == null)
         {
             return;
         }

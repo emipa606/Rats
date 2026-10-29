@@ -1,25 +1,23 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <PropertyGroup>
-    <OutputPath>..\..\AchievementsExpanded\1.6\Assemblies</OutputPath>
-    <TargetFramework>net48</TargetFramework>
-    <GenerateAssemblyInfo>false</GenerateAssemblyInfo>
+    <OutputPath>..\..\AchievementsExpanded\1.7\Assemblies</OutputPath>
+    <TargetFramework>net10.0</TargetFramework>
     <AppendTargetFrameworkToOutputPath>false</AppendTargetFrameworkToOutputPath>
     <AppendRuntimeIdentifierToOutputPath>false</AppendRuntimeIdentifierToOutputPath>
     <DebugType>None</DebugType>
     <LangVersion>latest</LangVersion>
-    <FileVersion>1.6.1</FileVersion>
-  </PropertyGroup>
+  <FileVersion>1.7.0</FileVersion><GenerateDependencyFile>false</GenerateDependencyFile><AssemblyVersion>1.7</AssemblyVersion><Product>Rats!</Product><Copyright>© Mlie 2026 - MIT License</Copyright><Nullable>warnings</Nullable></PropertyGroup>
   <ItemGroup>
     <PackageReference Include="Krafs.Rimworld.Ref">
-      <Version>*</Version>
+      <Version>1.7.4990-unstable</Version>
       <ExcludeAssets>runtime</ExcludeAssets>
       <IncludeAssets>compile; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
-	  <Reference Include="VanillaAchievementsExpanded">
-		  <HintPath>..\..\..\..\..\..\workshop\content\294100\2288125657\1.6\Assemblies\AchievementsExpanded.dll</HintPath>
-		  <CopyLocal>False</CopyLocal>
-		  <Private>false</Private>
-	  </Reference>
+    <Reference Include="AchievementsExpanded">
+      <HintPath>..\..\..\..\..\..\workshop\content\294100\2288125657\1.6\Assemblies\AchievementsExpanded.dll</HintPath>
+      <CopyLocal>False</CopyLocal>
+      <Private>false</Private>
+    </Reference>
     <ProjectReference Include="..\Rats\Rats.csproj">
       <CopyLocalSatelliteAssemblies>False</CopyLocalSatelliteAssemblies>
       <CopyLocal>False</CopyLocal>
@@ -27,4 +25,4 @@
       <ExcludeAssets>all</ExcludeAssets>
     </ProjectReference>
   </ItemGroup>
-</Project>
+<Target Name="KillRimWorld" BeforeTargets="Clean;Build"><Exec Command="taskkill.exe /F /IM RimWorld.exe /T &gt;nul 2&gt;&amp;1" IgnoreExitCode="true" /></Target></Project>

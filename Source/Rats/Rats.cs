@@ -5,7 +5,7 @@ using Verse;
 namespace Rats;
 
 [StaticConstructorOnStartup]
-public class Rats
+public static class Rats
 {
     public static List<PawnKindDef> ValidRatRaces;
     public static List<PawnKindDef> InsideRatRaces;

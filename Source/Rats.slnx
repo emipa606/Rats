@@ -7,4 +7,15 @@
   </Configurations>
   <Project Path="AchievementsExpanded/AchievementsExpanded_RatTracker.csproj" />
   <Project Path="Rats/Rats.csproj" />
+  <Folder Name="/XML/1.7/Patches/">
+    <File Path="../1.7/Patches/Core.xml" />
+    <File Path="../1.7/Patches/FancyRats.xml" />
+    <File Path="../1.7/Patches/SnowRats.xml" />
+  </Folder>
+  <Folder Name="/XML/Languages/English/Keyed/">
+    <File Path="../Languages/English/Keyed/Mod_Settings.xml" />
+  </Folder>
+  <Folder Name="/XML/About/">
+    <File Path="../About/about.xml" />
+  </Folder>
 </Solution>
